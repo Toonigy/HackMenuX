@@ -1,0 +1,1432 @@
+//CrackinPMG Old Menu
+
+
+var script = document.createElement("script");
+script.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+document.head.appendChild(script);
+
+script.onload = function() {
+  console.log("SweetAlert2 loaded!");
+
+  // Create style element
+  var style = document.createElement("style");
+  style.innerHTML = `
+    /* Style for the cheat menu */
+    #cheatMenu {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      z-index: 10000;
+      padding: 20px;
+      overflow: auto;
+      box-sizing: border-box;
+      transition: top 0.25s ease-in-out;
+    }
+    #cheatMenu.visible {
+      top: 0;
+      transition: top 0.25s ease-in-out;
+    }
+    #cheatMenu.hidden {
+      top: -100%;
+      transition: top 0.25s ease-in-out;
+    }
+    #cheatMenu.hiding {
+      animation: slideUp 0.25s ease-in-out;
+    }
+    @keyframes slideUp {
+      0% {
+        top: 0;
+      }
+      100% {
+        top: -100%;
+      }
+    }
+    #cheatMenu h1 {
+      text-align: center;
+      color: #333;
+    }
+    #cheatMenu h1 + p {
+      text-align: center;
+    }
+    #cheatMenu .section {
+      margin: 20px 0;
+    }
+    #cheatMenu .section h2 {
+      color: #444;
+      margin-bottom: 10px;
+    }
+    #cheatMenu .section .button-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    #cheatMenu .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: calc(30% - 10px);
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #f9f9f9;
+    }
+    #cheatMenu button {
+      padding: 10px;
+      background: #fa8a28;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      box-sizing: border-box;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    #cheatMenu button:hover {
+      background: #fa7828;
+    }
+    #cheatMenu .description {
+      font-size: 12px;
+      color: #666;
+      padding: 5px;
+    }
+    /* Style for the toggle arrow button */
+    #toggleMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.8);
+      color: #000;
+      padding: 5px;
+      cursor: pointer;
+      z-index: 10001;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 18px;
+    }
+    #toggleMenu:before {
+      content: '\\25BC';
+      font-size: 20px;
+    }
+    #toggleMenu.rotated:before {
+      content: '\\25B2';
+    }
+    .my-swal {
+      z-index: 30000;
+    }
+    .my-popup {
+      width: 400px;
+    }
+    /* Toggle switch styles */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-switch .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .toggle-switch .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    .toggle-switch input:checked + .slider {
+      background-color: #2196F3;
+    }
+    .toggle-switch input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    .toggle-switch input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  `;
+  document.head.appendChild(style);
+
+// Create cheat menu element
+  var cheatMenu = document.createElement("div");
+  cheatMenu.id = "cheatMenu";
+  cheatMenu.className = "hidden";
+  cheatMenu.innerHTML = `
+    <h1>CrackinPMG Cheat Menu</h1>
+    <p>Join our discord community to stay up-to-date on the latest hacks and receive helpful support from our team. Simply click this link: <a href="https://discord.gg/KXDrcZQV6R" target="_blank">https://discord.gg/KXDrcZQV6R</a></p>
+<div class="section">
+  <h2>Character Enhancements</h2>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_gold">Set Gold</button>
+      <div class="description">[SERVER SIDE] Set your player's gold to a specific amount (0-10,000,000).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_tower_level">Set Dark Tower Level</button>
+      <div class="description">[SERVER SIDE] Set your player's Dark Tower level to a specific value (0-1,000).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_bounty_score">Set Bounty Score</button>
+      <div class="description">[SERVER SIDE] Set your player's bounty score to a specific amount (0-e+308).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_player_level">Set Player Level</button>
+      <div class="description">[SERVER SIDE] Set your player's level to a specific value (1-100).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_grade">Set Grade</button>
+      <div class="description">[SERVER SIDE] Set your player's grade to a specific value (1-8).</div>
+    </div>
+  </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_player_walkspeed">Set Player Walkspeed</button>
+      <div class="description">[CLIENT SIDE] Set your player's walkspeed to a specific value (0-e+308).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_player_member_stars">Set Player Member Stars</button>
+      <div class="description">[SERVER SIDE] Set your player's member stars to a specific amount (0-e+308).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+  <button id="set_player_size">Set Player Size</button>
+  <div class="description">[CLIENT SIDE] Set your player's size to a specific value (0-3).</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_player_morph">Set Player Morph</button>
+      <div class="description">[SERVER SIDE] Set your player's character to a pet, follow, or furniture.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+  <button id="set_player_name">Set Player Name</button>
+  <div class="description">[SERVER SIDE] Set your player's name.</div>
+    </div>
+  </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="set_custom_player_name">Set Custom Player Name</button>
+      <div class="description">[CLIENT SIDE] Set your player's name to a custom string.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>Miscellaneous</h2>
+  <div class="button-row">
+    <div class="button-container">
+      <label class="toggle-switch">
+        <input type="checkbox" id="noclip-toggle">
+        <span class="slider"></span>
+      </label>
+      <span>Toggle Noclip</span>
+      <div class="description">[CLIENT SIDE] Walk through walls and obstacles.</div>
+    </div>
+    <div class="button-container">
+      <label class="toggle-switch">
+        <input type="checkbox" id="teleport-click-toggle">
+        <span class="slider"></span>
+      </label>
+      <span>Toggle Teleport Click</span>
+      <div class="description">[CLIENT SIDE] Teleport to the location you click on the map.</div>
+    </div>
+    <div class="button-container">
+      <label class="toggle-switch">
+        <input type="checkbox" id="invisibility-toggle">
+        <span class="slider"></span>
+      </label>
+      <span>Toggle Invisibility</span>
+      <div class="description">[CLIENT SIDE] Make your character invisible to your screen.</div>
+    </div>
+   <div class="button-container">
+  <label class="toggle-switch">
+    <input type="checkbox" id="hide-name-toggle">
+    <span class="slider"></span>
+  </label>
+  <span>Toggle Hide Player Name</span>
+  <div class="description">[CLIENT SIDE] Hides your character's name.</div>
+    </div>
+    <div class="button-container">
+  <label class="toggle-switch">
+    <input type="checkbox" id="togglePauseGame">
+    <span class="slider"></span>
+  </label>
+  <span>Toggle Pause Game</span>
+  <div class="description">[CLIENT SIDE] Pauses or resumes the game.</div>
+    </div>
+  </div>
+  <div class="button-row">
+    <div class="button-container">
+  <label class="toggle-switch">
+    <input type="checkbox" id="basic-membership-toggle">
+    <span class="slider"></span>
+  </label>
+  <span>Toggle Basic Membership</span>
+  <div class="description">[SERVER SIDE] Temporarily enable or disable basic membership.</div>
+    </div>
+    <div class="button-container">
+      <!-- Future button # -->
+    </div>
+    <div class="button-container">
+      <!-- Future button # -->
+    </div>
+    <div class="button-container">
+      <!-- Future button # -->
+    </div>
+    <div class="button-container">
+      <!-- Future button # -->
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>Utility</h2>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="save_game">Save Game</button>
+      <div class="description">[SERVER SIDE] Saves and updates your game.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="wheel_spins">Unlimited Wheel Spins</button>
+      <div class="description">[SERVER SIDE] Gives you unlimited Wheel of Wonder and Wheel of Twighlight spins.</div>
+    </div>
+   <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="crash_game">Crash Game</button>
+      <div class="description">[SERVER SIDE] Freezes and breaks your game.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     <button id="fix_morph_crash">Fix Morph Crash</button>
+      <div class="description">[SERVER SIDE] Fixes the morph glitch caused by incomplete game data.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <!-- Future button 3 -->
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>Inventory</h2>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="getAllItems">Get All Items</button>
+      <div class="description">[SERVER SIDE] Get all items in the player's backpack.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="clearAllItems">Clear All Items</button>
+      <div class="description">[SERVER SIDE] Clear all items from the player's backpack.</div>
+    </div>
+    <!-- Blank button containers -->
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+  </div>
+</div>
+  `;
+  document.body.appendChild(cheatMenu);
+
+// Additional functions
+
+function changeName(nameType) {
+  var options = {};
+  if (nameType === 'nickname') {
+    options[0] = 'None'; // Add a 'None' option with a value of 0
+    Boot.prototype.game._state._states.get('Boot')._gameData.nickname.forEach((e) => {
+      options[e.ID] = `${e.data.value} (${e.ID})`;
+    });
+  } else {
+    Boot.prototype.game._state._states.get('Boot')._gameData.name.filter(item => item.data.type === {'first': 0, 'middle': 1, 'last': 2}[nameType]).forEach((e) => {
+      options[e.ID] = `${e.data.name} (${e.ID})`;
+    });
+  }
+
+  var title = nameType === 'nickname' ? 'Set Nickname' : `Set ${{'first': 'First', 'middle': 'Middle', 'last': 'Last'}[nameType]} Name`;
+  var confirmButtonText = nameType === 'nickname' ? 'Set' : 'Continue';
+
+  Swal.fire({
+    title: title,
+    input: 'select',
+    inputOptions: options,
+    inputValidator: (e) => e ? '' : `Please select a ${{'first': 'first', 'middle': 'middle', 'last': 'last', 'nickname': 'nick'}[nameType]} name.`,
+    showCancelButton: true,
+    confirmButtonText: confirmButtonText,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+  }).then((result) => {
+    if (!result.value) {
+      return;
+    }
+    var nameId = result.value;
+    var source = Boot.prototype.game._state._current.user.source;
+    if (nameType === 'nickname') {
+      if (nameId === '0') { // Check if the 'None' option was selected
+        source.appearance._name.nickname = null;
+      } else {
+        source.appearance._name.nickname = parseInt(nameId);
+      }
+    } else {
+      source.appearance._name[{'first': 'firstName', 'middle': 'middleName', 'last': 'lastName'}[nameType]] = parseInt(nameId);
+    }
+
+    if (nameType === 'first') {
+      changeName('middle');
+    } else if (nameType === 'middle') {
+      changeName('last');
+    } else if (nameType === 'last') {
+      changeName('nickname');
+    } else {
+      source.appearance.updated = true;
+      source.updated = true;
+      source.saveEnabled = true;
+      source.forceSaveCharacter();
+      source.appearanceChanged = true;
+      Swal.fire({
+  title: 'Success!',
+  text: 'Name changed successfully.',
+  icon: 'success',
+  customClass: {
+    container: 'my-swal',
+    popup: 'my-popup'
+  }
+});
+    }
+  });
+}
+
+  // Get toggle buttons
+  var noclipToggle = document.getElementById("noclip-toggle");
+  var teleportClickToggle = document.getElementById("teleport-click-toggle");
+  var invisibilityToggle = document.getElementById("invisibility-toggle");
+  var setGoldButton = document.getElementById("set_gold");
+  var setTowerButton = document.getElementById("set_tower_level");
+var setBountyScoreButton = document.getElementById("set_bounty_score");
+var setPlayerLevelButton = document.getElementById("set_player_level");
+var setGradeButton = document.getElementById("set_grade");
+var setPlayerWalkspeedButton = document.getElementById("set_player_walkspeed");
+var setPlayerMemberStarsButton = document.getElementById("set_player_member_stars");
+var saveGameButton = document.getElementById("save_game");
+var spinButton = document.getElementById("wheel_spins");
+var hideNameToggle = document.getElementById("hide-name-toggle");
+    var crashGameButton = document.getElementById("crash_game");
+    var togglePauseGameButton = document.getElementById("togglePauseGame");
+    var setPlayerSizeButton = document.getElementById("set_player_size");
+var setPlayerMorphButton = document.getElementById("set_player_morph");
+var fixMorphCrashButton = document.getElementById("fix_morph_crash");
+    var basicMembershipToggle = document.getElementById("basic-membership-toggle");
+    var setPlayerNameButton = document.getElementById("set_player_name");
+    var SetPlayerCustomNameButton = document.getElementById("set_custom_player_name");
+var getAllItemsButton = document.getElementById("getAllItems");
+var clearAllItemsButton = document.getElementById("clearAllItems");
+
+  // Add event listeners
+
+getAllItemsButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Unlock All Items",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Unlock",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 1 || e > 1e308 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 1 and 1e308",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      unlockAllItems(result.value);
+        Swal.fire({
+  title: "Success!",
+  text: `Succesfully unlocked all items with amount ${result.value}`,
+  icon: "success",
+  customClass: {
+    container: "my-swal",
+    popup: "my-popup"
+  }
+});
+    }
+  });
+});
+
+clearAllItemsButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Clear All Items",
+    showCancelButton: true,
+    confirmButtonText: "Clear",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      clearAllItems();
+        Swal.fire({
+  title: "Success!",
+  text: "All items cleared successfully.",
+  icon: "success",
+  customClass: {
+    container: "my-swal",
+    popup: "my-popup"
+  }
+});
+    }
+  });
+});
+
+// Function to unlock all items
+function unlockAllItems(quantity=value) {
+  var types = [
+    "boots",
+    "currency",
+    "fossil",
+    "hat",
+    "item",
+    "key",
+    "mount",
+    "outfit",
+    "relic",
+    "spellRelic",
+    "weapon",
+    "follow"
+  ];
+
+  types.forEach(type => {
+    var itemType = `Boot.prototype.game._state._current.user.source.backpack.data.${type}`;
+
+    if (!eval(itemType)) {
+      eval(`${itemType} = []`);
+    }
+
+    eval(`${itemType}.length = 0`);
+
+    var itemsData = Boot.prototype.game._state._states.get("Boot")._gameData[type];
+
+    var excludedIDs = []
+    if (type === "follow") {
+      excludedIDs = [125, 126, 127, 128, 129, 134, 135, 136, 137]
+    }
+
+    itemsData.forEach(item => {
+      if (!(type === "follow" && excludedIDs.includes(item.ID))) {
+        eval(`${itemType}.push({ "ID": item.ID, "N": quantity })`);
+      }
+    });
+
+  });
+
+
+  // Set backpack updated to true to indicate changes
+  Boot.prototype.game._state._current.user.source.backpack.updated = true;
+
+  Swal.fire({
+    title: "Success!",
+    text: "All items unlocked successfully.",
+    icon: "success",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  });
+}
+
+// Function to clear all items
+function clearAllItems() {
+  var types = [
+    "boots",
+    "currency",
+    "fossil",
+    "hat",
+    "item",
+    "key",
+    "mount",
+    "outfit",
+    "relic",
+    "spellRelic",
+    "weapon",
+    "follow"
+  ];
+
+  types.forEach(type => {
+    var itemType = `Boot.prototype.game._state._current.user.source.backpack.data.${type}`;
+    eval(`${itemType} = []`);
+  });
+
+  // Set backpack updated to true to indicate changes
+  Boot.prototype.game._state._current.user.source.backpack.updated = true;
+
+  console.log(`Cleared all items.`);
+}
+    
+SetPlayerCustomNameButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Custom Player Name",
+    input: "text",
+    inputPlaceholder: "Enter custom name",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(result => {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.getName = () => {
+        return result.value;
+      };
+      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+      Swal.fire({
+        title: "Success",
+        text: "Custom name set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+
+setPlayerNameButton.addEventListener("click", function () {
+    changeName('first');
+});
+
+basicMembershipToggle.addEventListener("click", function() {
+    if (this.checked) {
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return true;
+    };
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    Swal.fire({
+      title: "Basic Membership Enabled",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  } else {
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return false;
+    };
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    Swal.fire({
+      title: "Basic Membership Disabled",
+      icon: "error",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  }
+});
+    
+ fixMorphCrashButton.addEventListener("click", function() {
+  Boot.prototype.game._state._current.user.source.getPlayerData().playerTransformation = void 0;
+  Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+  Boot.prototype.game._state._current.user._morphTransformation.clearMorphedAppearance();
+  Boot.prototype.game._state._current.user._morphTransformation.clearMorphedAppearanceWithoutEffect();
+  Swal.fire({
+    title: "Success",
+    text: "Morph glitch fixed",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false,
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  });
+});   
+    
+setPlayerMorphButton.addEventListener("click", function () {
+  Swal.fire({
+    title: 'Which morph type?',
+    input: 'select',
+    inputOptions: {
+      pet: 'Pet',
+      dorm: 'Furniture',
+      follow: 'Follow',
+    },
+    inputPlaceholder: 'Morph Type',
+    inputValidator: (e) => e ? '' : 'Please select a morph type.',
+    showCancelButton: true,
+    showConfirmButton: true,
+    confirmButtonText: 'Continue',
+    customClass: {
+      container: 'my-swal',
+      popup: 'my-popup'
+    }
+  }).then((result) => {
+    if (!result.value) {
+      return;
+    }
+    var morphType = result.value;
+    var options = {};
+    Boot.prototype.game._state._states.get('Boot')._gameData[morphType].forEach((e) => {
+      options[e.ID] = `${e.data.name} (${e.ID})`;
+    });
+    Swal.fire({
+      title: 'Which morph?',
+      input: 'select',
+      inputOptions: options,
+      inputPlaceholder: 'Morph ID',
+      inputValidator: (e) => e ? '' : 'Please select a morph ID.',
+      showCancelButton: true,
+      customClass: {
+        container: 'my-swal',
+        popup: 'my-popup'
+      }
+    }).then((result) => {
+      if (!result.value) {
+        return;
+      }
+      var morphID = result.value;
+      Boot.prototype.game._state._current.user.source.getPlayerData().playerTransformation = {
+        transformType: morphType,
+        transformID: morphID,
+        maxTime: 36e5,
+        timeRemaining: 36e5,
+      };
+        Boot.prototype.game._state._current.user._morphTransformation.createMorphAppearance();
+      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+      Swal.fire({
+        title: 'Morphed!',
+        text: 'You\'ve been morphed.',
+        icon: 'success',
+        customClass: {
+          container: 'my-swal',
+          popup: 'my-popup'
+        }
+      });
+    });
+  });
+});
+    var sizeInterval = null;
+
+   setPlayerSizeButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Player Size",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 0 || e > 3) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid number between 0 and 3",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    },
+    footer: "The default size is 1"
+  }).then(function(result) {
+    if (result.value) {
+      let newSize = parseFloat(result.value);
+      if (sizeInterval) {
+        clearInterval(sizeInterval);
+      }
+      sizeInterval = setInterval(() => {
+        Boot.prototype.game._state._current.user.worldScale.set(newSize, newSize);
+        Boot.prototype.game._state._current.user.scale.set(newSize, newSize);
+      }, 50);
+      Swal.fire({
+        title: "Success",
+        text: "Player size set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+    
+togglePauseGameButton.addEventListener("click", function() {
+  Boot.prototype.game.paused = !Boot.prototype.game.paused;
+  if (Boot.prototype.game.paused) {
+    Swal.fire({
+      title: "Game Paused",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  } else {
+    Swal.fire({
+      title: "Game Resumed",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  }
+});
+    
+crashGameButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will crash your game! Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Crash Game",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.shutdown();
+    setInterval(function() { Boot.prototype.game.paused = true }, 50);
+    }
+  });
+});
+    
+    hideNameToggle.addEventListener("change", function() {
+  if (this.checked) {
+    Swal.fire({
+      title: "Player Name Hidden",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+    hideNameInterval = setInterval(() => {
+      Boot.prototype.game._state._current.user.hideName();
+    }, 50); // adjust the interval to a reasonable value
+  } else {
+    Swal.fire({
+      title: "Player Name Shown",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+    clearInterval(hideNameInterval);
+    Boot.prototype.game._state._current.user.showName();
+  }
+});
+    
+spinButton.addEventListener("click", function() {
+  Boot.prototype.game._state._current.user.source.canSpin = function() {
+    return true;
+  };
+  Swal.fire({
+    title: "Success",
+    text: "Unlimited spins enabled",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false,
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  });
+});
+  noclipToggle.addEventListener("change", function() {
+    if (this.checked) {
+      Swal.fire({
+        title: "Noclip Enabled",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+      previousAreaState = Boot.prototype.game._state._current.area.map(e => e.slice());
+      NoclipInterval = setInterval(() => {
+        for (var e = Boot.prototype.game._state._current.area, t = 0; t < e.length; t++) e[t] = Array(64).fill(1);
+      }, 50);
+    } else {
+      Swal.fire({
+        title: "Noclip Disabled",
+        icon: "error",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+      clearInterval(NoclipInterval);
+      for (var e = Boot.prototype.game._state._current.area, t = 0; t < e.length; t++) e[t] = previousAreaState[t];
+    }
+  });
+
+saveGameButton.addEventListener("click", function() {
+  var currentState = Boot.prototype.game._state._current;
+  currentState.update();
+  currentState.updateOnFaintData();
+  currentState.updatePlayer(currentState.user.source.userID);
+  currentState.screenUpdate();
+  
+  var user = currentState.user;
+  user.update();
+  user.updateTransform();
+  user.updateMountAppearance();
+  user.source.updated = true;
+  user.source.appearance.updated = true;
+  user.source.appearanceChanged = true;
+  user.source.saveEnabled = true;
+  user.source._saveEnabled = true;
+  user.source.forceSaveCharacter();
+  user.source.backpack.updated = true;
+  user.source.kennel.updated = true;
+  
+  Swal.fire({
+          title: "Success",
+          text: "Game saved succesfully",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+});
+    
+  invisibilityToggle.addEventListener("change", function() {
+    if (this.checked) {
+      Swal.fire({
+        title: "Invisibility Enabled",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+      invisibilityInterval = setInterval(() => {
+        Boot.prototype.game._state._current.user.visible = false;
+      }, 50);
+    } else {
+      Swal.fire({
+        title: "Invisibility Disabled",
+        icon: "error",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+      clearInterval(invisibilityInterval);
+      Boot.prototype.game._state._current.user.visible = true;
+    }
+  });
+
+  setGoldButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Gold",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 1 || e > 1e7 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 1 and 10,000,000",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(e) {
+    if (e.value) {
+      Boot.prototype.game._state._current.user.source.getPlayerData().gold = parseInt(e.value);
+      Boot.prototype.game._state._current.user.source.data.gold = parseInt(e.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Gold set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+setBountyScoreButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Bounty Score",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 0 || e > 1e308 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 0 and e+308",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.getPlayerData().bountyScore = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.data.bountyScore = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Bounty score set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+setPlayerLevelButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Player Level",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 1 || e > 100 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 1 and 100",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.getPlayerData().level = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.data.level = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Player level set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+setGradeButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Grade",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 1 || e > 8 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 1 and 8",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.educationData.grade = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.educationData.chosenGrade = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.grade = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Grade set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+
+let walkSpeedInterval = null;
+let customWalkSpeed = null; // store custom walkspeed value
+
+teleportClickToggle.addEventListener("change", function() {
+  if (this.checked) {
+    Swal.fire({
+      title: "Teleport Click Enabled",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+    startWalkSpeedInterval(true);
+  } else {
+    Swal.fire({
+      title: "Teleport Click Disabled",
+      icon: "error",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+    stopWalkSpeedInterval();
+    if (customWalkSpeed !== null) {
+      // restore custom walkspeed value when teleport click is disabled
+      Boot.prototype.game._state._current.user.walkSpeed = customWalkSpeed;
+      customWalkSpeed = null;
+    } else {
+      // set walkspeed to default value (1.5) if no custom value is set
+      Boot.prototype.game._state._current.user.walkSpeed = 1.5;
+    }
+  }
+});
+    
+setPlayerWalkspeedButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Walkspeed",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 0 || e > 1e308 || !/^-?\d+(\.\d+)?$/.test(e)) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid decimal number between 0 and e+308",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    },
+    footer: "The default walkspeed is 1.5"
+  }).then(function(result) {
+    if (result.value) {
+      if (teleportClickToggle.checked) {
+        // store custom walkspeed value when teleport click is enabled
+        customWalkSpeed = parseFloat(result.value);
+      } else {
+        Boot.prototype.game._state._current.user.walkSpeed = parseFloat(result.value);
+      }
+      Swal.fire({
+        title: "Success",
+        text: "Walkspeed set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+
+function startWalkSpeedInterval(teleportClickEnabled, customWalkSpeedValue) {
+  if (walkSpeedInterval) {
+    clearInterval(walkSpeedInterval);
+  }
+  walkSpeedInterval = setInterval(() => {
+    if (teleportClickEnabled) {
+      // prioritize custom walkspeed when teleport click is enabled
+      Boot.prototype.game._state._current.user.walkSpeed = customWalkSpeedValue || 1e100;
+    } else {
+      Boot.prototype.game._state._current.user.walkSpeed = customWalkSpeedValue || 1.5;
+    }
+  }, 50);
+}
+
+function stopWalkSpeedInterval() {
+  if (walkSpeedInterval) {
+    clearInterval(walkSpeedInterval);
+  }
+}
+    
+setPlayerMemberStarsButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Member Stars",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 0 || e > 1e308 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 0 and e+308",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.getPlayerData().storeMemberStars = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.data.storedMemberStars = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Member stars set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+setTowerButton.addEventListener("click", function() {
+  Swal.fire({
+    title: "Set Dark Tower Level",
+    input: "number",
+    inputPlaceholder: "",
+    showCancelButton: true,
+    confirmButtonText: "Set",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    inputValidator: function(e) {
+      if (!e || isNaN(e) || e < 1 || e > 1000 || e % 1 != 0) {
+        Swal.fire({
+          title: "Error",
+          text: "Please enter a valid whole number between 1 and 1000",
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            container: "my-swal",
+            popup: "my-popup"
+          }
+        });
+        return false;
+      }
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.getPlayerData().tower = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.data.tower = parseInt(result.value);
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Swal.fire({
+        title: "Success",
+        text: "Dark Tower level set successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+
+  // Create toggle menu button
+  var toggleMenu = document.createElement("div");
+  toggleMenu.id = "toggleMenu";
+  document.body.appendChild(toggleMenu);
+
+  toggleMenu.onclick = function() {
+    if (cheatMenu.classList.contains("hidden")) {
+      cheatMenu.classList.remove("hidden");
+      cheatMenu.classList.add("visible");
+      toggleMenu.classList.add("rotated");
+    } else {
+      cheatMenu.classList.remove("visible");
+      cheatMenu.classList.add("hiding");
+      toggleMenu.classList.remove("rotated");
+      setTimeout(function() {
+        cheatMenu.classList.remove("hiding");
+        cheatMenu.classList.add("hidden");
+      }, 250);
+    }
+  };
+};
