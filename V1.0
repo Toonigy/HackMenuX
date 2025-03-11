@@ -234,10 +234,12 @@ script.onload = function() {
       <div class="description">[CLIENT SIDE] Set your player's name to a custom string.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="set_player_level">Set Player Level</button>
+      <div class="description">[SERVER SIDE] Set your player's name to a specific value (1-100).</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-     
+      <button id="set_custom_player_level">Set Custom Player Level</button>
+      <div class="description">[CLIENT SIDE] Set your player's level to a custom value.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
      
@@ -358,6 +360,32 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>Battle and Monsters</h2>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="remove_monsters">Remove Monsters in Area</button>
+      <div class="description">[SERVER SIDE] Deletes all monsters in player's current area.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="add_monster">Spawn Monster</button>
+      <div class="description">[SERVER SIDE] Spawns a monster/s of player's choice.</div>
+    </div>
+    <!-- Blank button containers -->
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="exit_battle">Exit Battle</button>
+      <div class="description">[SERVER SIDE] Exits player from current battle.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="battle_zoom">Battle Zoom</button>
+      <div class="description">[SERVER SIDE] Adjust zoom of battle.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="battle_message">Battle Message</button>
+      <div class="description">[SERVER SIDE] Adds a message into the battle.</div>
     </div>
   </div>
 </div>
