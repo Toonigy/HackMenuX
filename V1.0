@@ -234,12 +234,11 @@ script.onload = function() {
       <div class="description">[CLIENT SIDE] Set your player's name to a custom string.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="set_player_level">Set Player Level</button>
-      <div class="description">[SERVER SIDE] Set your player's name to a specific value (1-100).</div>
-    </div>
-    <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="set_custom_player_level">Set Custom Player Level</button>
       <div class="description">[CLIENT SIDE] Set your player's level to a custom value.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
      
