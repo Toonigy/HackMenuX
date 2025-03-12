@@ -399,7 +399,7 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Add later.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="teky-4">TEK-Y4</button>
+      <button id="teky4">TEK-Y4</button>
       <div class="description">[SERVER SIDE] Add later.</div>
     </div>
     <!-- Blank button containers -->
@@ -519,7 +519,7 @@ var exit_battle = document.getElementById("exit_battle")
 var battle_message = document.getElementById("battle_message")
 var battle_zoom = document.getElementById("battle_zoom")
 var dyno_dig_oasis = document.getElementById("dyno_dig_oasis")
-var teky-4 = document.getElementById("teky-4")
+var teky4 = document.getElementById("teky4")
 var academy_archives = document.getElementById("academy_archives")
 var get_all_gems = document.getElementById("get_all_gems")
 var get_specific_epic_buddy = document.getElementById("get_specific_epic_buddy")
