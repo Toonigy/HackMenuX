@@ -513,7 +513,88 @@ var fixMorphCrashButton = document.getElementById("fix_morph_crash");
 var getAllItemsButton = document.getElementById("getAllItems");
 var clearAllItemsButton = document.getElementById("clearAllItems");
 
+var remove_monsters = document.getElementById("remove_monsters")
+var add_monster = document.getElementById("add_monster")
+var exit_battle = document.getElementById("exit_battle")
+var battle_message = document.getElementById("battle_message")
+var battle_zoom = document.getElementById("battle_zoom")
+var dyno_dig_oasis = document.getElementById("dyno_dig_oasis")
+var teky-4 = document.getElementById("teky-4")
+var academy_archives = document.getElementById("academy_archives")
+var get_all_gems = document.getElementById("get_all_gems")
+var get_specific_epic_buddy = document.getElementById("get_specific_epic_buddy")
+var get_all_epic_buddies = document.getElementById("get_all_epic_buddies")
+var set_customer_player_level = document.getElementById("set_customer_player_level")
+
+
   // Add event listeners
+
+exit_battle.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will kick player out of their current battle!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Exit Player",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      if (Boot.prototype.game._state.current === 'SecureBattleRevamp') {
+        Boot.prototype.game._state._current.init();
+      };
+    }
+  });
+});
+
+remove_monsters.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This hack is still being tested, are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Remove Monsters",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      var a = Boot.prototype.game._state._current._world.getCurrentZone(),
+      b = Boot.prototype.game._state._current._world.getCurrentMap(),
+      c = Boot.prototype.game._state._current._world.zones[a].maps[b.split("-")[1]].mapMonsters,
+      d = -1;
+      
+      c.forEach(function(e) {
+          if (e && e.data && e.monsterData) {
+              e.data.ID = d;
+              e.monsterData.ID = d;
+          }
+      });
+      
+      Boot.prototype.game._state._current.user.source.state.updated = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      
+      // Save current zone, map, and player coordinates
+      var current_zone_id = Boot.prototype.game._state._current._world.getCurrentZone();
+      var current_map_tag = Boot.prototype.game._state._current._world.getCurrentMapTag();
+      var current_x_pos = Boot.prototype.game._state._current.user.position._x;
+      var current_y_pos = Boot.prototype.game._state._current.user.position._y;
+      
+      // Teleport to the exact same spot to refresh
+      Boot.prototype.game._state._current._world.zones[current_zone_id].teleport(current_map_tag, current_x_pos, current_y_pos, {}, {});
+      
+      // Small timeout to ensure everything processes smoothly
+      setTimeout(function() {
+          console.log("All monsters in area have been removed!")
+      }, 100); // 100ms delay to ensure teleport completes
+    }
+  });
+});
 
 getAllItemsButton.addEventListener("click", function() {
   Swal.fire({
