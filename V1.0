@@ -374,6 +374,25 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Gets a specific Epic added into the player's backpack.</div>
     </div>
   </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="get_all_furniture">Get all furniture</button>
+      <div class="description">[SERVER SIDE] Gets all furniture added to the player's inventory.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="get_specific_furniture">Get specific furniture</button>
+      <div class="description">[SERVER SIDE] Gets specific furniture added to the player's inventory.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+
+    </div>
+  </div>
 </div>
 <div class="section">
   <h2>Battle and Monsters</h2>
