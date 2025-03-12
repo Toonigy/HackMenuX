@@ -609,7 +609,15 @@ get_specific_epic_buddy.addEventListener("click", function () {
         Boot.prototype.game._state._current.user.source.updated = true;
         Boot.prototype.game._state._current.user.source.backpack.updated = true;
 
-        Swal.fire("Success!", `${pet.name} has been added.`, "success");
+        Swal.fire({
+          title: 'Success!',
+          text: `${pet.name} has been added successfully.`,
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
       }
     }
   });
@@ -661,7 +669,15 @@ get_all_epic_buddies.addEventListener("click", function () {
       Boot.prototype.game._state._current.user.source.updated = true;
       Boot.prototype.game._state._current.user.source.backpack.updated = true;
 
-      Swal.fire("Success!", "All epics have been added.", "success");
+      Swal.fire({
+          title: 'Success!',
+          text: "All epics have been added successfully.",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
     }
   });
 });
