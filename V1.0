@@ -300,15 +300,25 @@ script.onload = function() {
   </label>
   <span>Toggle Basic Membership</span>
   <div class="description">[SERVER SIDE] Temporarily enable or disable basic membership.</div>
-    </div>
+  </div>
+  <div class="button-container">
+    <label class="toggle-switch">
+    <input type="checkbox" id="ui-removal-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>Toggle UI Removal</span>
+    <div class="description">[CLIENT SIDE] Hides or shows player UI.</div>
+  </div>
+  <div class="button-container">
+    <label class="toggle-switch">
+    <input type="checkbox" id="players-removal-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>Toggle Players Removal</span>
+    <div class="description">[CLIENT SIDE] Hides or shows players.</div>
+  </div>
     <div class="button-container">
-      <!-- Future button - Can you add a remove in game ui button here, and a remove players from screen one - i already have the code # -->
-    </div>
-    <div class="button-container">
-      <!-- Future button # -->
-    </div>
-    <div class="button-container">
-      <!-- Future button # -->
+      <!-- Future button - eeeeeeeeeeeeeee # -->
     </div>
     <div class="button-container">
       <!-- Future button # -->
