@@ -529,6 +529,114 @@ var set_customer_player_level = document.getElementById("set_customer_player_lev
 
   // Add event listeners
 
+get_specific_epic_buddy.addEventListener("click", function () {
+  const followPets = [
+    { ID: 125, assetID: 270, name: "Big Hex" },
+    { ID: 126, assetID: 271, name: "Florafox" },
+    { ID: 127, assetID: 272, name: "Arctursus" },
+    { ID: 128, assetID: 273, name: "Diveodile" },
+    { ID: 129, assetID: 274, name: "Magmischief" },
+    { ID: 134, assetID: 1261, name: "Chill & Char" },
+    { ID: 135, assetID: 1263, name: "Tidus" },
+    { ID: 136, assetID: 1283, name: "Luma" },
+    { ID: 137, assetID: 1284, name: "Eclipse" }
+  ];
+
+  let options = followPets.map(pet => `<option value="${pet.ID}">${pet.name}</option>`).join("");
+
+  Swal.fire({
+    title: "Select an Epic",
+    html: `<select id="epicSelect" class="swal2-select">${options}</select>`,
+    showCancelButton: true,
+    confirmButtonText: "Add Epic",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    },
+    didOpen: () => {
+      document.getElementById("epicSelect").focus();
+    }
+  }).then((result) => {
+    if (result.value) {
+      const selectedID = parseInt(document.getElementById("epicSelect").value);
+      const pet = followPets.find(p => p.ID === selectedID);
+
+      if (pet) {
+        const backpack = Boot.prototype.game._state._current.user.source.backpack.data;
+        if (!backpack.follow) backpack.follow = [];
+
+        backpack.follow.push({
+          ID: pet.ID,
+          assetID: pet.assetID,
+          N: 1,
+          defence: 0,
+          hp: 0,
+          power: 0,
+          speed: 40,
+          type: "follow"
+        });
+
+        Boot.prototype.game._state._current.user.source.updated = true;
+        Boot.prototype.game._state._current.user.source.backpack.updated = true;
+
+        Swal.fire("Success!", `${pet.name} has been added.`, "success");
+      }
+    }
+  });
+});
+
+
+get_all_epic_buddies.addEventListener("click", function () {
+  Swal.fire({
+    title: "Add All Epics?",
+    text: "This will add all epics to your backpack.",
+    icon: "info",
+    showCancelButton: true,
+    confirmButtonText: "Add Epics",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function (result) {
+    if (result.value) {
+      const backpack = Boot.prototype.game._state._current.user.source.backpack.data;
+      if (!backpack.follow) backpack.follow = [];
+
+      const followPets = [
+        { ID: 125, assetID: 270, name: "Big Hex" },
+        { ID: 126, assetID: 271, name: "Florafox" },
+        { ID: 127, assetID: 272, name: "Arctursus" },
+        { ID: 128, assetID: 273, name: "Diveodile" },
+        { ID: 129, assetID: 274, name: "Magmischief" },
+        { ID: 134, assetID: 1261, name: "Chill & Char" },
+        { ID: 135, assetID: 1263, name: "Tidus" },
+        { ID: 136, assetID: 1283, name: "Luma" },
+        { ID: 137, assetID: 1284, name: "Eclipse" }
+      ];
+
+      followPets.forEach(pet => {
+        backpack.follow.push({
+          ID: pet.ID,
+          assetID: pet.assetID,
+          N: 1,
+          defence: 0,
+          hp: 0,
+          power: 0,
+          speed: 40,
+          type: "follow"
+        });
+      });
+
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.backpack.updated = true;
+
+      Swal.fire("Success!", "All epics have been added.", "success");
+    }
+  });
+});
+
 exit_battle.addEventListener("click", function() {
   Swal.fire({
     title: "Warning!",
