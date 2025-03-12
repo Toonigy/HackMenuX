@@ -356,10 +356,12 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Gets all gems added into the player's backpack.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-     
+      <button id="get_all_epic_buddies">Get All Epics</button>
+      <div class="description">[SERVER SIDE] Gets all Epics added into the player's backpack.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="get_specific_epic_buddy">Get Specific Epic</button>
+      <div class="description">[SERVER SIDE] Gets a specific Epic added into the player's backpack.</div>
     </div>
   </div>
 </div>
