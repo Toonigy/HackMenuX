@@ -345,7 +345,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Fixes the morph glitch caused by incomplete game data.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <!-- Future button 3 -->
+      <button id="player_teleporter">Player Teleporter</button>
+      <div class="description">[SERVER SIDE] Teleports the player to their chosen zone, map, and coordinates.</div>
     </div>
   </div>
 </div>
@@ -554,9 +555,86 @@ var get_all_gems = document.getElementById("get_all_gems")
 var get_specific_epic_buddy = document.getElementById("get_specific_epic_buddy")
 var get_all_epic_buddies = document.getElementById("get_all_epic_buddies")
 var set_custom_player_level = document.getElementById("set_custom_player_level")
+var player_teleporter = document.getElementById("player_teleporter")
 
 
   // Add event listeners
+
+
+player_teleporter.addEventListener("click", function() {
+  Swal.fire({
+    title: "Select Zone",
+    html: `<select id="zoneSelect" class="swal2-select"></select>`,
+    showCancelButton: true,
+    confirmButtonText: "Next",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" },
+    didOpen: function() {
+      var zoneSelect = document.getElementById("zoneSelect"),
+          zones = Object.keys(Boot.prototype.game._state._current._world.zones);
+          
+      zones.forEach(zone => {
+        var option = document.createElement("option"),
+            zoneData = Boot.prototype.game._state._current._world.zones[zone];
+        option.value = zone;
+        option.textContent = zoneData.name || zone;
+        zoneSelect.appendChild(option);
+      });
+    }
+  }).then(function(result) {
+    if (result.value) {
+      var selectedZone = document.getElementById("zoneSelect").value,
+          maps = Object.keys(Boot.prototype.game._state._current._world.zones[selectedZone].maps);
+
+      Swal.fire({
+        title: "Select Map",
+        html: `<select id="mapSelect" class="swal2-select"></select>`,
+        showCancelButton: true,
+        confirmButtonText: "Next",
+        cancelButtonText: "Cancel",
+        customClass: { container: "my-swal", popup: "my-popup" },
+        didOpen: function() {
+          var mapSelect = document.getElementById("mapSelect");
+          maps.forEach(map => {
+            var option = document.createElement("option"),
+                mapData = Boot.prototype.game._state._current._world.zones[selectedZone].maps[map];
+            option.value = map;
+            option.textContent = `${map} - ${mapData.name || map}`;
+            mapSelect.appendChild(option);
+          });
+        }
+      }).then(function(result) {
+        if (result.value) {
+          var selectedMap = document.getElementById("mapSelect").value; // ✅ Fix: Get value before moving to next step
+          var mapTag = Boot.prototype.game._state._current._world.zones[selectedZone].maps[selectedMap].zoneName; // ✅ Now this won't be null
+
+          Swal.fire({
+            title: "Enter Coordinates",
+            html: `<input type="text" id="positionInput" value="500, 500" class="swal2-input">`,
+            showCancelButton: true,
+            confirmButtonText: "Teleport",
+            cancelButtonText: "Cancel",
+            customClass: { container: "my-swal", popup: "my-popup" }
+          }).then(function(result) {
+            if (result.value) {
+              var coords = document.getElementById("positionInput").value.split(",").map(n => parseInt(n.trim(), 10));
+              if (isNaN(coords[0]) || isNaN(coords[1])) {
+                Swal.fire({ title: "Error", text: "Invalid coordinates.", icon: "error", customClass: { container: "my-swal", popup: "my-popup" } });
+                return;
+              }
+
+              Boot.prototype.game._state._current._world.zones[selectedZone].teleport(mapTag.substring(mapTag.indexOf("-") + 1), coords[0], coords[1], {}, {});
+
+              Swal.fire({ title: "Success!", text: `Teleported to ${mapTag} at (${coords[0]}, ${coords[1]})`, icon: "success", customClass: { container: "my-swal", popup: "my-popup" } });
+            }
+          });
+        }
+      });
+    }
+  });
+});
+
+
 
 set_custom_player_level.addEventListener("click", function() {
   Swal.fire({
