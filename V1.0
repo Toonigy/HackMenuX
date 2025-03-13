@@ -543,23 +543,57 @@ var fixMorphCrashButton = document.getElementById("fix_morph_crash");
 var getAllItemsButton = document.getElementById("getAllItems");
 var clearAllItemsButton = document.getElementById("clearAllItems");
 
-var remove_monsters = document.getElementById("remove_monsters")
-var add_monster = document.getElementById("add_monster")
-var exit_battle = document.getElementById("exit_battle")
-var battle_message = document.getElementById("battle_message")
-var battle_zoom = document.getElementById("battle_zoom")
-var dyno_dig_oasis = document.getElementById("dyno_dig_oasis")
-var teky4 = document.getElementById("teky4")
-var academy_archives = document.getElementById("academy_archives")
-var get_all_gems = document.getElementById("get_all_gems")
-var get_specific_epic_buddy = document.getElementById("get_specific_epic_buddy")
-var get_all_epic_buddies = document.getElementById("get_all_epic_buddies")
-var set_custom_player_level = document.getElementById("set_custom_player_level")
-var player_teleporter = document.getElementById("player_teleporter")
+var remove_monsters = document.getElementById("remove_monsters");
+var add_monster = document.getElementById("add_monster");
+var exit_battle = document.getElementById("exit_battle");
+var battle_message = document.getElementById("battle_message");
+var battle_zoom = document.getElementById("battle_zoom");
+var dyno_dig_oasis = document.getElementById("dyno_dig_oasis");
+var teky4 = document.getElementById("teky4");
+var academy_archives = document.getElementById("academy_archives");
+var get_all_gems = document.getElementById("get_all_gems");
+var get_specific_epic_buddy = document.getElementById("get_specific_epic_buddy");
+var get_all_epic_buddies = document.getElementById("get_all_epic_buddies");
+var set_custom_player_level = document.getElementById("set_custom_player_level");
+var player_teleporter = document.getElementById("player_teleporter");
+var get_all_furniture = document.getElementById("get_all_furniture");
+var get_specific_furniture = document.getElementById("get_specific_furniture");
 
 
   // Add event listeners
 
+get_all_gems.addEventListener("click", function() {
+  Swal.fire({
+    title: "Confirm Gems Addition",
+    text: "Are you sure you want to add all gems to your backpack?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Add Gems",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(function(result) {
+    if (result.value) {
+      let e = Boot.prototype.game._state._current.user.source;
+      [3, 4, 10, 11, 17].forEach(t => {
+        let a = e.backpack.data.key.find(e => e.ID === t);
+        a ? a.N += 1 : e.backpack.data.key.push({ ID: t, N: 1 });
+      });
+      e.appearance.updated = true;
+      e.updated = true;
+      e.saveEnabled = true;
+      e.forceSaveCharacter();
+      e.appearanceChanged = true;
+      e.backpack.updated = true;
+      console.log("Attempted to add gems")
+      Swal.fire({
+        title: "Success!",
+        text: "All gems have been added to your backpack.",
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      });
+    }
+  });
+});
 
 player_teleporter.addEventListener("click", function() {
   Swal.fire({
