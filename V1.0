@@ -377,11 +377,11 @@ script.onload = function() {
   </div>
   <div class="button-row">
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="get_all_furniture">Get all furniture</button>
+      <button id="get_all_furniture">Get All Furniture</button>
       <div class="description">[SERVER SIDE] Gets all furniture added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="get_specific_furniture">Get specific furniture</button>
+      <button id="get_specific_furniture">Get Specific Furniture</button>
       <div class="description">[SERVER SIDE] Gets specific furniture added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
@@ -561,6 +561,34 @@ var get_specific_furniture = document.getElementById("get_specific_furniture");
 
 
   // Add event listeners
+get_all_furniture.addEventListener("click", function() {
+  Swal.fire({
+    title: "Unlock All Furniture",
+    text: "Are you sure you want to unlock all furniture with an unlimited quantity?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Unlock",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(function(result) {
+    if (result.value) {
+      let e = Boot.prototype.game._state._current.user.source;
+      e.house.data.items = {};
+      Boot.prototype.game._state._states.get("Boot")._gameData.dorm.forEach(t => {
+        e.house.data.items[t.ID] = { A: [], N: 999999999999999 };
+      });
+      e.house.updated = true;
+      e.updated = true;
+
+      Swal.fire({
+        title: "Success!",
+        text: "All furniture items have been unlocked.",
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      });
+    }
+  });
+});
 
 get_all_gems.addEventListener("click", function() {
   Swal.fire({
