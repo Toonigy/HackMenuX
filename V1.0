@@ -559,8 +559,59 @@ var player_teleporter = document.getElementById("player_teleporter");
 var get_all_furniture = document.getElementById("get_all_furniture");
 var get_specific_furniture = document.getElementById("get_specific_furniture");
 
-
   // Add event listeners
+
+
+get_specific_furniture.addEventListener("click", function() {
+  let gameData = Boot.prototype.game._state._states.get("Boot")._gameData.dorm;
+  let options = gameData.map(item => `<option value="${item.ID}">${item.name}</option>`).join("");
+
+  Swal.fire({
+    title: "Select Furniture",
+    html: `<select id="furnitureSelect" class="swal2-select">${options}</select>`,
+    showCancelButton: true,
+    confirmButtonText: "Next",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" },
+    didOpen: () => {
+      document.getElementById("furnitureSelect").focus();
+    }
+  }).then(result => {
+    if (result.value) {
+      let selectedID = document.getElementById("furnitureSelect").value;
+      let selectedName = gameData.find(item => item.ID == selectedID).name;
+
+      Swal.fire({
+        title: `Enter Quantity for ${selectedName}`,
+        input: "number",
+        inputAttributes: { min: 1 },
+        inputValue: 1,
+        showCancelButton: true,
+        confirmButtonText: "Unlock",
+        cancelButtonText: "Cancel",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      }).then(result => {
+        if (result.value) {
+          let quantity = Math.max(1, parseInt(result.value, 10) || 1);
+          let e = Boot.prototype.game._state._current.user.source;
+
+          e.house.data.items[selectedID] = { A: [], N: quantity };
+          e.house.updated = true;
+          e.updated = true;
+
+          Swal.fire({
+            title: "Success!",
+            text: `Unlocked ${quantity} of ${selectedName}.`,
+            icon: "success",
+            customClass: { container: "my-swal", popup: "my-popup" }
+          });
+        }
+      });
+    }
+  });
+});
+
+
 get_all_furniture.addEventListener("click", function() {
   Swal.fire({
     title: "Unlock All Furniture",
