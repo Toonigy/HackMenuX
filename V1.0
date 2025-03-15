@@ -385,7 +385,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Gets specific furniture added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-
+      <button id="get_specific_pet">Get Specific Pet</button>
+      <div class="description">[SERVER SIDE] Gets a specific pet added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
 
@@ -558,8 +559,84 @@ var set_custom_player_level = document.getElementById("set_custom_player_level")
 var player_teleporter = document.getElementById("player_teleporter");
 var get_all_furniture = document.getElementById("get_all_furniture");
 var get_specific_furniture = document.getElementById("get_specific_furniture");
+var get_specific_pet = document.getElementById("get_specific_pet");
 
   // Add event listeners
+
+
+get_specific_pet.addEventListener("click", function() {
+  let petData = Boot.prototype.game._state.get("Boot")._gameData.pet;
+  let options = petData.map(pet => `<option value="${pet.ID}">${pet.data.name}</option>`).join("");
+
+  Swal.fire({
+    title: "Select Pet",
+    html: `<select id="petSelect" class="swal2-select">${options}</select>`,
+    showCancelButton: true,
+    confirmButtonText: "Next",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" },
+    didOpen: () => {
+      document.getElementById("petSelect").focus();
+    }
+  }).then(result => {
+    if (result.value) {
+      let selectedID = document.getElementById("petSelect").value;
+      let selectedPet = petData.find(pet => pet.ID == selectedID);
+      let selectedPetName = selectedPet.data.name;
+      let selectedPetLevel = selectedPet.level;
+
+      Swal.fire({
+        title: `Set Level for ${selectedPetName}`,
+        input: "number",
+        inputAttributes: { min: 1, max: 100 },
+        inputValue: selectedPetLevel,
+        showCancelButton: true,
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      }).then(result => {
+        if (result.value) {
+          let level = Math.max(1, Math.min(100, parseInt(result.value, 10) || 1)); // Ensure valid level
+          let userSource = Boot.prototype.game._state._current.user.source;
+          let kennel = userSource.kennel;
+
+          // Create the new pet object
+          let newPet = {
+            ID: selectedPet.ID, // Use selected pet's ID
+            catchDate: Date.now(), // Timestamp for the catch date
+            foreignSpells: [], // Add any foreign spells if needed
+            level: level, // Set the level
+            levelCaught: level, // Initially set the level caught to the same
+            stars: 361, // Default stars, can be adjusted if necessary
+            uniqueID: generateUniqueID() // Generate or assign a unique ID (you can define this function)
+          };
+
+          // Add the pet to the kennel
+          kennel._petData.push(newPet);
+          console.log(kennel._petData);
+
+          // Save the data
+          userSource.kennel.updated = true;
+          userSource.updated = true;
+
+          Swal.fire({
+            title: "Success!",
+            text: `${selectedPetName} has been added to your kennel at level ${level}.`,
+            icon: "success",
+            customClass: { container: "my-swal", popup: "my-popup" }
+          });
+        }
+      });
+    }
+  });
+});
+
+// Helper function to generate unique ID (you can modify this if needed)
+function generateUniqueID() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+
 
 
 get_specific_furniture.addEventListener("click", function() {
