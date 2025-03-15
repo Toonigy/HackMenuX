@@ -389,7 +389,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Gets a specific pet added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-
+      <button id="get_all_pets">Get All Pets</button>
+      <div class="description">[SERVER SIDE] Gets all pets added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
 
@@ -560,8 +561,75 @@ var player_teleporter = document.getElementById("player_teleporter");
 var get_all_furniture = document.getElementById("get_all_furniture");
 var get_specific_furniture = document.getElementById("get_specific_furniture");
 var get_specific_pet = document.getElementById("get_specific_pet");
+var get_all_pets = document.getElementById("get_all_pets")
+  
 
-  // Add event listeners
+// Add event listeners
+
+
+get_all_pets.addEventListener("click", function() {
+  Swal.fire({
+    title: "Select Level for All Pets",
+    input: "number",
+    inputAttributes: { min: 1, max: 100 },
+    inputValue: 100, // Default level set to 100
+    showCancelButton: true,
+    confirmButtonText: "Next",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(result => {
+    if (result.value) {
+      let level = Math.max(1, Math.min(100, parseInt(result.value, 10) || 100)); // Ensure valid level
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: `Do you want to add all pets at level ${level}?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      }).then(confirmResult => {
+        if (confirmResult.value) {
+          let gameData = Boot.prototype.game._state.get("Boot")._gameData.pet;
+          let kennel = Boot.prototype.game._state._current.user.source.kennel;
+
+          gameData.forEach(petData => {
+            // Check if pet is already in the kennel
+            // let existingPet = kennel._petData.find(pet => pet.ID === petData.ID);
+            // if (!existingPet) {
+              // If pet is not in the kennel, create a new pet object and add it
+            let newPet = {
+              ID: petData.ID,
+              catchDate: Date.now(),
+              foreignSpells: [], // Add any required spells here if needed
+              level: level, // Set the desired level for the new pet
+              levelCaught: level,
+              stars: 361, // Set initial stars (modify if needed)
+              uniqueID: Math.random().toString(36).substr(2, 9) // Generate a unique ID
+            };
+
+            // Add the new pet to the kennel
+            kennel._petData.push(newPet);
+            // }
+          });
+
+          // Mark the kennel data as updated
+          Boot.prototype.game._state._current.user.source.kennel.updated = true;
+          Boot.prototype.game._state._current.user.source.updated = true;
+
+          Swal.fire({
+            title: "Success!",
+            text: `All pets have been added at level ${level}.`,
+            icon: "success",
+            customClass: { container: "my-swal", popup: "my-popup" }
+          });
+        }
+      });
+    }
+  });
+});
+
 
 
 get_specific_pet.addEventListener("click", function() {
