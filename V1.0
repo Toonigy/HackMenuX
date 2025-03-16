@@ -414,7 +414,7 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Exits player from current battle.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="battle_zoom">Battle Zoom</button>
+      <button id="battle_camera_zoom">Battle Zoom</button>
       <div class="description">[SERVER SIDE] Adjust zoom of battle.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
@@ -585,9 +585,48 @@ var get_all_pets = document.getElementById("get_all_pets")
 var show_battle_message = document.getElementById("show_battle_message")
 var show_pinned_battle_message = document.getElementById("show_pinned_battle_message")
 var unpin_battle_message = document.getElementById("unpin_battle_message")
-  
+var battle_camera_zoom = document.getElementById("battle_camera_zoom")  
 
 // Add event listeners
+
+battle_camera_zoom.addEventListener("click", function() {
+  // SweetAlert with inputs for background and foreground zoom
+  Swal.fire({
+    title: "Set Battle Zoom",
+    html: `
+      <div>
+        <label for="backgroundZoom">Background Zoom:</label>
+        <input id="backgroundZoom" type="number" value="1" min="0" max="1000000">
+      </div>
+      <div>
+        <label for="foregroundZoom">Foreground Zoom:</label>
+        <input id="foregroundZoom" type="number" value="1" min="0" max="1000000">
+      </div>
+    `,
+    showCancelButton: true,
+    confirmButtonText: "Set Zoom",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" },
+  }).then(result => {
+    if (result.value) {
+      let backgroundZoom = parseFloat(document.getElementById("backgroundZoom").value);
+      let foregroundZoom = parseFloat(document.getElementById("foregroundZoom").value);
+
+      // Set zoom for background and foreground
+      Boot.prototype.game._state._current._battleController.setZoom(backgroundZoom, foregroundZoom);
+
+      // Success confirmation
+      Swal.fire({
+        title: "Success!",
+        text: `Battle camera zoom set to background: ${backgroundZoom}, foreground: ${foregroundZoom}.`,
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      });
+    }
+  });
+});
+
+
 
 unpin_battle_message.addEventListener("click", function() {
   // Confirmation for unpinning the message
