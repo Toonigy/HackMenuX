@@ -418,8 +418,28 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Adjust zoom of battle.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="battle_message">Battle Message</button>
-      <div class="description">[SERVER SIDE] Adds a message into the battle.</div>
+      <button id="show_battle_message">Show Battle Message</button>
+      <div class="description">[SERVER SIDE] Adds a message into the battle for a specified amount of time.</div>
+    </div>
+  </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="show_pinned_battle_message">Show Pinned Battle Message</button>
+      <div class="description">[SERVER SIDE] Adds a pinned message into the battle.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="unpin_battle_message">Unpin Battle Message</button>
+      <div class="description">[SERVER SIDE] Unpins pinned message in the battle.</div>
+    </div>
+    <!-- Blank button containers -->
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
     </div>
   </div>
 </div>
@@ -562,10 +582,110 @@ var get_all_furniture = document.getElementById("get_all_furniture");
 var get_specific_furniture = document.getElementById("get_specific_furniture");
 var get_specific_pet = document.getElementById("get_specific_pet");
 var get_all_pets = document.getElementById("get_all_pets")
+var show_battle_message = document.getElementById("show_battle_message")
+var show_pinned_battle_message = document.getElementById("show_pinned_battle_message")
+var unpin_battle_message = document.getElementById("unpin_battle_message")
   
 
 // Add event listeners
 
+unpin_battle_message.addEventListener("click", function() {
+  // Confirmation for unpinning the message
+  Swal.fire({
+    title: "Do you want to unpin your pinned message?",
+    showCancelButton: true,
+    confirmButtonText: "Unpin Message",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(result => {
+    if (result.value) {
+      // Unpin the message
+      Boot.prototype.game._state._current._battleController.textLog.unpinMessage();
+
+      // Success confirmation
+      Swal.fire({
+        title: "Success!",
+        text: "Your pinned message has been unpinned.",
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      });
+    }
+  });
+});
+
+
+show_pinned_battle_message.addEventListener("click", function() {
+  // Prompt for the message to pin
+  Swal.fire({
+    title: "Enter the message you would like to pin",
+    input: "text",
+    inputPlaceholder: "Type your pinned message here",
+    showCancelButton: true,
+    confirmButtonText: "Pin Message",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(result => {
+    if (result.value) {
+      let message = result.value;
+
+      // Show the pinned message
+      Boot.prototype.game._state._current._battleController.textLog.showPinnedMessage(message);
+
+      // Success confirmation
+      Swal.fire({
+        title: "Success!",
+        text: `The message has been pinned: "${message}"`,
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      });
+    }
+  });
+});
+
+
+show_battle_message.addEventListener("click", function() {
+  // First prompt for the message to display
+  Swal.fire({
+    title: "What message would you like to send?",
+    input: "text",
+    inputPlaceholder: "Type your message here",
+    showCancelButton: true,
+    confirmButtonText: "Next",
+    cancelButtonText: "Cancel",
+    customClass: { container: "my-swal", popup: "my-popup" }
+  }).then(result => {
+    if (result.value) {
+      let message = result.value;
+
+      // Second prompt for how long the message should be visible (in milliseconds)
+      Swal.fire({
+        title: "How long would you like this message to be visible for?",
+        input: "number",
+        inputAttributes: { min: 100, max: 10000 },
+        inputValue: 1500, // Default value
+        showCancelButton: true,
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        customClass: { container: "my-swal", popup: "my-popup" }
+      }).then(timeResult => {
+        if (timeResult.value) {
+          let duration = Math.max(100, Math.min(10000, parseInt(timeResult.value, 10) || 1500)); // Ensure valid time input
+
+          // Show the message in the battle log for the specified duration
+          Boot.prototype.game._state._current._battleController.textLog.showMessageForMs(duration, message);
+
+          // Success confirmation
+          Swal.fire({
+            title: "Success!",
+            text: `The message has been sent and will appear for ${duration} milliseconds.`,
+            icon: "success",
+            customClass: { container: "my-swal", popup: "my-popup" }
+          });
+        }
+      });
+    }
+  });
+});
 
 get_all_pets.addEventListener("click", function() {
   Swal.fire({
