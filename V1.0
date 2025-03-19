@@ -393,7 +393,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Gets all pets added to the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-
+      <button id="get_specific_item">Get Specific Item</button>
+      <div class="description">[SERVER SIDE] Gets a specific item added to the player's inventory.</div>
     </div>
   </div>
 </div>
@@ -581,13 +582,18 @@ var player_teleporter = document.getElementById("player_teleporter");
 var get_all_furniture = document.getElementById("get_all_furniture");
 var get_specific_furniture = document.getElementById("get_specific_furniture");
 var get_specific_pet = document.getElementById("get_specific_pet");
-var get_all_pets = document.getElementById("get_all_pets")
-var show_battle_message = document.getElementById("show_battle_message")
-var show_pinned_battle_message = document.getElementById("show_pinned_battle_message")
-var unpin_battle_message = document.getElementById("unpin_battle_message")
-var battle_camera_zoom = document.getElementById("battle_camera_zoom")  
+var get_all_pets = document.getElementById("get_all_pets");
+var show_battle_message = document.getElementById("show_battle_message");
+var show_pinned_battle_message = document.getElementById("show_pinned_battle_message");
+var unpin_battle_message = document.getElementById("unpin_battle_message");
+var battle_camera_zoom = document.getElementById("battle_camera_zoom");
+var get_specific_item = document.getElementById("get_specific_item");
 
 // Add event listeners
+
+
+
+
 
 battle_camera_zoom.addEventListener("click", function() {
   // SweetAlert with inputs for background and foreground zoom
