@@ -592,7 +592,85 @@ var get_specific_item = document.getElementById("get_specific_item");
 // Add event listeners
 
 
+get_specific_item.addEventListener("click", async () => {
+    let user = Boot.prototype.game._state._current.user.source;
+    let gameData = Boot.prototype.game._state._states.get("Boot")._gameData;
 
+    // Mapping of category variables to custom display names
+    const categoryDisplayNames = {
+        "follow": "Buddies",
+        "mount": "Mounts",
+        "hat": "Hats",
+        "boots": "Boots",
+        "weapon": "Wands",
+        "outfit": "Outfits",
+        "item": "Items",
+        "fossil": "Fossils",
+        "key": "Key Items",
+        "relic": "Old Relics",
+        "currency": "Currency",
+        "spellRelic": "Relics"
+    };
+
+    let categories = Object.keys(user.backpack.data).filter(cat => Array.isArray(user.backpack.data[cat]));
+
+    // Create custom display options using the categoryDisplayNames mapping
+    let customCategoryOptions = Object.fromEntries(categories.map(c => [c, categoryDisplayNames[c] || c]));
+
+    let { value: category } = await Swal.fire({
+        title: "Select Item Category",
+        input: "select",
+        inputOptions: customCategoryOptions,
+        inputPlaceholder: "Choose a category",
+        showCancelButton: true,
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+
+    if (!category) return;
+
+    let items = gameData[category] || [];
+
+    // If the selected category is 'follow', filter out the excluded items by their IDs
+    if (category === "follow") {
+        const excludedIDs = [125, 126, 127, 128, 129, 134, 135, 136, 137];
+        items = items.filter(item => !excludedIDs.includes(item.ID));
+    }
+
+    let itemOptions = Object.fromEntries(items.map(i => [i.ID, `${i.data.name} (ID: ${i.ID})`]));
+
+    let { value: itemID } = await Swal.fire({
+        title: `Select ${customCategoryOptions[category] || category}`,
+        input: "select",
+        inputOptions: itemOptions,
+        inputPlaceholder: "Choose an item",
+        showCancelButton: true,
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+
+    if (!itemID) return;
+
+    let { value: amount } = await Swal.fire({
+        title: "Enter Quantity",
+        input: "number",
+        inputAttributes: { min: 1, max: 9999999999999999999999 },
+        inputValue: 1,
+        showCancelButton: true,
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+
+    if (!amount || amount < 1) return;
+
+    user.backpack.data[category].push({ ID: Number(itemID), N: Number(amount) });
+    user.backpack.updated = true;
+    user.updated = true;
+
+    Swal.fire({
+        title: "Success!",
+        text: `Added ${amount} of ID ${itemID} to ${category}.`,
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+});
 
 
 battle_camera_zoom.addEventListener("click", function() {
