@@ -913,8 +913,10 @@ get_all_pets.addEventListener("click", function() {
           });
 
           // Mark the kennel data as updated
+          Boot.prototype.game._state._current.user.source._saveEnabled = true;
           Boot.prototype.game._state._current.user.source.kennel.updated = true;
           Boot.prototype.game._state._current.user.source.updated = true;
+          Boot.prototype.game._state._current.user.source.forceSaveCharacter();
 
           Swal.fire({
             title: "Success!",
@@ -982,8 +984,10 @@ get_specific_pet.addEventListener("click", function() {
           console.log(kennel._petData);
 
           // Save the data
+          userSource._saveEnabled = true;
           userSource.kennel.updated = true;
           userSource.updated = true;
+          userSource.forceSaveCharacter();
 
           Swal.fire({
             title: "Success!",
