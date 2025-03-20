@@ -307,7 +307,7 @@ script.onload = function() {
       <span class="slider"></span>
     </label>
     <span>Toggle UI Removal</span>
-    <div class="description">[CLIENT SIDE] Hides or shows player UI.</div>
+    <div class="description">[CLIENT SIDE] Hides or shows player UI (CURRENTLY BEING LOOKED INTO).</div>
   </div>
   <div class="button-container">
     <label class="toggle-switch">
@@ -589,7 +589,62 @@ var unpin_battle_message = document.getElementById("unpin_battle_message");
 var battle_camera_zoom = document.getElementById("battle_camera_zoom");
 var get_specific_item = document.getElementById("get_specific_item");
 
+var players_removal_toggle = document.getElementById("players-removal-toggle");
+
 // Add event listeners
+
+
+players_removal_toggle.addEventListener("click", function() {
+    if (this.checked) {
+    // Set all players and their follows invisible
+    Object.keys(Boot.prototype.game._state._current.playerList).forEach(playerID => {
+        const player = Boot.prototype.game._state._current.playerList[playerID];
+        
+        // Set player and follow visibility to false
+        if (player) {
+            player.visible = false;
+            if (player.follow) {
+                player.follow.visible = false;
+            }
+        }
+    });
+
+    Swal.fire({
+      title: "Players Set to Invisible",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  } else {
+    // Set all players and their follows visible
+    Object.keys(Boot.prototype.game._state._current.playerList).forEach(playerID => {
+        const player = Boot.prototype.game._state._current.playerList[playerID];
+        
+        // Set player and follow visibility to true
+        if (player) {
+            player.visible = true;
+            if (player.follow) {
+                player.follow.visible = true;
+            }
+        }
+    });
+
+    Swal.fire({
+      title: "Players Set to Visible",
+      icon: "error",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  }
+});
 
 
 get_specific_item.addEventListener("click", async () => {
