@@ -407,7 +407,7 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="add_monster">Spawn Monster</button>
-      <div class="description">[SERVER SIDE] Spawns a monster/s of player's choice.</div>
+      <div class="description">[SERVER SIDE] Spawns a monster/s of player's choice. (BETA Version)</div>
     </div>
     <!-- Blank button containers -->
     <div class="button-container" style="width: calc(33.33% - 10px);">
@@ -588,10 +588,71 @@ var show_pinned_battle_message = document.getElementById("show_pinned_battle_mes
 var unpin_battle_message = document.getElementById("unpin_battle_message");
 var battle_camera_zoom = document.getElementById("battle_camera_zoom");
 var get_specific_item = document.getElementById("get_specific_item");
+var add_monster = document.getElementById("add_monster")
 
 var players_removal_toggle = document.getElementById("players-removal-toggle");
 
 // Add event listeners
+
+
+add_monster.addEventListener("click", async () => {
+    let gameData = Boot.prototype.game._state._states.get("Boot")._gameData.pet;
+    gameData.sort((a, b) => (a.data.name || "").localeCompare(b.data.name || ""));
+
+    let petOptions = Object.fromEntries(gameData.map(pet => [pet.ID, `${pet.data.name || `Pet ID: ${pet.ID}`}`]));
+
+    let { value: petID } = await Swal.fire({
+        title: "Select a Pet",
+        input: "select",
+        inputOptions: petOptions,
+        inputPlaceholder: "Choose a pet...",
+        showCancelButton: true,
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+
+    if (!petID) return;
+
+    let petName = petOptions[petID];
+
+    let confirm = await Swal.fire({
+        title: "Confirm Selection",
+        text: `Set all monsters in the current map to ${petName} (ID: ${petID})?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+
+    if (!confirm.isConfirmed) return;
+
+    let world = Boot.prototype.game._state._current._world;
+    let user = Boot.prototype.game._state._current.user.source;
+    let currentZone = world.getCurrentZone();
+    let currentMap = world.getCurrentMap();
+    let mapMonsters = world.zones[currentZone].maps[currentMap.split("-")[1]].mapMonsters;
+
+    mapMonsters.forEach(monster => {
+        if (monster && monster.data && monster.monsterData) {
+            monster.data.ID = parseInt(petID);
+            monster.monsterData.ID = parseInt(petID);
+        }
+    });
+
+    user.state.updated = true;
+    user.updated = true;
+
+    let { x, y } = Boot.prototype.game._state._current.user.position;
+    world.zones[currentZone].teleport(world.getCurrentMapTag(), x, y, {}, {});
+
+    Swal.fire({
+        title: "Success!",
+        text: `All monsters in the current map have been updated to ${petName} (ID: ${petID}).`,
+        icon: "success",
+        customClass: { container: "my-swal", popup: "my-popup" }
+    });
+});
+
 
 
 players_removal_toggle.addEventListener("click", function() {
