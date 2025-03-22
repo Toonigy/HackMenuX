@@ -303,19 +303,19 @@ script.onload = function() {
   </div>
   <div class="button-container">
     <label class="toggle-switch">
-    <input type="checkbox" id="ui-removal-toggle">
-      <span class="slider"></span>
-    </label>
-    <span>Toggle UI Removal</span>
-    <div class="description">[CLIENT SIDE] Hides or shows player UI (CURRENTLY BEING LOOKED INTO).</div>
-  </div>
-  <div class="button-container">
-    <label class="toggle-switch">
     <input type="checkbox" id="players-removal-toggle">
       <span class="slider"></span>
     </label>
     <span>Toggle Players Removal</span>
     <div class="description">[CLIENT SIDE] Hides or shows players.</div>
+  </div>
+  <div class="button-container">
+    <label class="toggle-switch">
+    <input type="checkbox" id="ui-removal-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>Toggle UI Removal</span>
+    <div class="description">[CLIENT SIDE] Hides or shows player UI (CURRENTLY BEING LOOKED INTO).</div>
   </div>
     <div class="button-container">
       <!-- Future button - eeeeeeeeeeeeeee # -->
@@ -395,6 +395,24 @@ script.onload = function() {
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="get_specific_item">Get Specific Item</button>
       <div class="description">[SERVER SIDE] Gets a specific item added to the player's inventory.</div>
+    </div>
+  </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="delete_all_pets">Delete All Pets</button>
+      <div class="description">[SERVER SIDE] Deletes all pets from the player's kennel.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
     </div>
   </div>
 </div>
@@ -589,10 +607,44 @@ var unpin_battle_message = document.getElementById("unpin_battle_message");
 var battle_camera_zoom = document.getElementById("battle_camera_zoom");
 var get_specific_item = document.getElementById("get_specific_item");
 var add_monster = document.getElementById("add_monster")
+var delete_all_pets = document.getElementById("delete_all_pets");
 
 var players_removal_toggle = document.getElementById("players-removal-toggle");
 
 // Add event listeners
+
+delete_all_pets.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will delete all pets from the player's kennel!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete All Pets",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.kennel._petData.length = 0;
+      Boot.prototype.game._state._current.user.source._saveEnabled = true;
+      Boot.prototype.game._state._current.user.source.kennel.updated = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+    Swal.fire({
+          title: 'Success!',
+          text: "All pets have been deleted successfully.",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 add_monster.addEventListener("click", async () => {
