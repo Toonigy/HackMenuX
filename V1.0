@@ -403,13 +403,16 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Deletes all pets from the player's kennel.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="get_all_pet_gear">Get All Pet Gear</button>
+      <div class="description">[CLIENT SIDE] Adds all pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="get_specific_pet_gear">Delete All Pets</button>
+      <div class="description">[CLIENT SIDE] Adds a specific pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="get_magicoin">Get Magicoin</button>
+      <div class="description">[CLIENT SIDE] Adds a specified amount of magicoins to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       
