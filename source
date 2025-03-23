@@ -404,18 +404,19 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="get_all_pet_gear">Get All Pet Gear</button>
-      <div class="description">[CLIENT SIDE] Adds all pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
+      <div class="description">[CLIENT SIDE] Adds all pet gear to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="get_specific_pet_gear">Get Specific Pet Gear</button>
-      <div class="description">[CLIENT SIDE] Adds a specific pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
+      <button id="get_specific_pet_hat">Get Specific Pet Hat</button>
+      <div class="description">[CLIENT SIDE] Adds a specific pet hat to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="get_specific_pet_relic">Get Specific Pet Relic</button>
+      <div class="description">[CLIENT SIDE] Adds a specific pet relic to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="get_magicoin">Get Magicoin</button>
       <div class="description">[CLIENT SIDE] Adds a specified amount of magicoins to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
-    </div>
-    <div class="button-container" style="width: calc(33.33% - 10px);">
-      
     </div>
   </div>
 </div>
@@ -616,7 +617,8 @@ var players_removal_toggle = document.getElementById("players-removal-toggle");
 // Verson 1.1 things:
 
 var get_all_pet_gear = document.getElementById("get_all_pet_gear");
-var get_specific_pet_gear = document.getElementById("get_specific_pet_gear");
+var get_specific_pet_hat = document.getElementById("get_specific_pet_hat");
+var get_specific_pet_relic = document.getElementById("get_specific_pet_relic");
 var get_magicoin = document.getElementById("get_magicoin");
 
 // Add event listeners
