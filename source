@@ -407,7 +407,7 @@ script.onload = function() {
       <div class="description">[CLIENT SIDE] Adds all pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="get_specific_pet_gear">Delete All Pets</button>
+      <button id="get_specific_pet_gear">Get Specific Pet Gear</button>
       <div class="description">[CLIENT SIDE] Adds a specific pet gear to inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
@@ -611,8 +611,13 @@ var battle_camera_zoom = document.getElementById("battle_camera_zoom");
 var get_specific_item = document.getElementById("get_specific_item");
 var add_monster = document.getElementById("add_monster")
 var delete_all_pets = document.getElementById("delete_all_pets");
-
 var players_removal_toggle = document.getElementById("players-removal-toggle");
+
+// Verson 1.1 things:
+
+var get_all_pet_gear = document.getElementById("get_all_pet_gear");
+var get_specific_pet_gear = document.getElementById("get_specific_pet_gear");
+var get_magicoin = document.getElementById("get_magicoin");
 
 // Add event listeners
 
