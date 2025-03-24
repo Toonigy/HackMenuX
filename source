@@ -623,7 +623,95 @@ var get_magicoin = document.getElementById("get_magicoin");
 
 // Add event listeners
 
-// fix script tomorrow V V V
+
+get_specific_pet_hat.addEventListener("click", function () {
+
+  !async function t(){var r={};return await Promise.all(Array.from(document.scripts).map(async function(t){if(t.src.includes("https://code.prodigygame.com/code"))try{await (await fetch(t.src)).text();var o=Boot.prototype.add.prodigyGame._rootContainer._inversifyContainer;o._bindingDictionary._map.forEach(function(t,a){try{var e=o.get(a);if(e&&"object"==typeof e){for(var i of Object.getOwnPropertyNames(e))r[i]=e[i];for(var n=Object.getPrototypeOf(e);n&&n!==Object.prototype;){for(var c of Object.getOwnPropertyNames(n))c in r||(r[c]=e[c]);n=Object.getPrototypeOf(n)}}}catch(f){}})}catch(a){}})),window._=r,r}();
+  // Retrieve available pet relics
+  const petHats = _._state.states.get("Boot")._gameData.petHat;
+
+  // Build the options for the SweetAlert dropdown
+  const options = petHats.map((hat) => ({
+    text: `${hat.data.name} (ID: ${hat.ID})`,
+    value: hat.ID
+  }));
+
+  // Show SweetAlert with the pet relic selector
+  Swal.fire({
+    title: "Select a Pet Hat",
+    text: "Please select the pet hat you wish to add to your inventory.",
+    input: "select",
+    inputOptions: options.reduce((acc, { text, value }) => {
+      acc[value] = text;
+      return acc;
+    }, {}),
+    inputPlaceholder: "Select a pet hat...",
+    showCancelButton: true,
+    confirmButtonText: "Add Hat",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function (result) {
+    if (result.value) {
+      // Selected hat ID
+      const selectedHatID = Number(result.value);
+      const selectedHat = petHats.find(hat => hat.ID === selectedHatID);
+
+
+      // Prepare the new item to add to the inventory
+      const timestamp = Date.now();
+      const newItem = {
+        userID: _.userID,
+        itemID: `petHat-${selectedHatID}`,
+        uuid: crypto.randomUUID(),
+        quantity: 1,
+        tags: ["petGear"],
+        data: {
+          asset: { id: selectedHatID, type: "petHat" },
+          createdAt: timestamp,
+          seenAt: timestamp
+        }
+      };
+
+      // Function to add items to inventory
+      function addItemsToInventory(promise, name) {
+        promise.then(data => {
+          if (Array.isArray(data)) {
+            data.push(newItem);  // Add the selected pet relic
+            console.log(`Updated ${name}:`, data);
+          } else if (data?.items && Array.isArray(data.items)) {
+            data.items.push(newItem);  // Add the selected pet relic to items array
+            console.log(`Updated ${name} (items array):`, data.items);
+          } else {
+            console.error(`Error: ${name} is not an array or doesn't have an 'items' array.`);
+          }
+        }).catch(console.error);
+      }
+
+      // Add the selected pet hat to petHats in _petGearInventory
+      addItemsToInventory(_._petGearInventory.petHats, "_petGearInventory.petHats");
+
+      // Add the selected pet hat to petGear (including petHat) from fetchPetGear
+      addItemsToInventory(_._petGearInventory.fetchPetGear(), "_petGearInventory.fetchPetGear()");
+
+      // Show success message after adding the relic
+      Swal.fire({
+        title: 'Success!',
+        text: `Pet Hat "${selectedHat.data.name}" (ID: ${selectedHatID}) has been added to your inventory.`,
+        icon: 'success',
+        customClass: {
+          container: 'my-swal',
+          popup: 'my-popup'
+        }
+      });
+    }
+  });
+});
+
+
+// fixed??
 get_specific_pet_relic.addEventListener("click", function () {
 
   !async function t(){var r={};return await Promise.all(Array.from(document.scripts).map(async function(t){if(t.src.includes("https://code.prodigygame.com/code"))try{await (await fetch(t.src)).text();var o=Boot.prototype.add.prodigyGame._rootContainer._inversifyContainer;o._bindingDictionary._map.forEach(function(t,a){try{var e=o.get(a);if(e&&"object"==typeof e){for(var i of Object.getOwnPropertyNames(e))r[i]=e[i];for(var n=Object.getPrototypeOf(e);n&&n!==Object.prototype;){for(var c of Object.getOwnPropertyNames(n))c in r||(r[c]=e[c]);n=Object.getPrototypeOf(n)}}}catch(f){}})}catch(a){}})),window._=r,r}();
@@ -656,8 +744,9 @@ get_specific_pet_relic.addEventListener("click", function () {
   }).then(function (result) {
     if (result.value) {
       // Selected relic ID
-      const selectedRelicID = result.value;
+      const selectedRelicID = Number(result.value);
       const selectedRelic = petRelics.find(relic => relic.ID === selectedRelicID);
+
 
       // Prepare the new item to add to the inventory
       const timestamp = Date.now();
