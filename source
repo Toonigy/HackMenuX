@@ -624,76 +624,133 @@ var get_magicoin = document.getElementById("get_magicoin");
 // Add event listeners
 
 
-get_magicoin.addEventListener("click", function () {
-  Swal.fire({
-    title: "Set Magicoin Amount",
-    text: "Enter the new amount for Magicoins:",
-    input: "number",
-    inputAttributes: {
-      min: "0",
-      max: "9999999",
-      step: "1"
-    },
-    showCancelButton: true,
-    confirmButtonText: "Set Value",
-    cancelButtonText: "Cancel",
-    customClass: {
-      container: "my-swal",
-      popup: "my-popup"
-    }
-  }).then((result) => {
-    if (result.value !== undefined) {
-      function _0x5ca2() {
-        const _0x197a9a = ['_cache', 'min', '5587656KovAow', 'stackable', 'quantity', 'entory', '433983kvYiuG', 'value', 'max', '_secureInv', '6MQBAVF',
-          '2455956IYWhQc', '7ZVzCpc', '1295836ELHbFn', '454550nZygeL', '192461sGgEEX', '9520560cCNHgS'
-        ];
-        _0x5ca2 = function() {
-          return _0x197a9a;
-        };
-        return _0x5ca2();
-      }
-      const _0x393048 = _0x2c0f;
-      
-      function _0x2c0f(_0x567a11, _0x4ea0b4) {
-        const _0x12125b = _0x5ca2();
-        return _0x2c0f = function(_0x171753, _0xb2b3c1) {
-          _0x171753 = _0x171753 - (-0x1 * -0x1f31 + -0x1 * -0x193f + 0x1 * -0x3694);
-          let _0x167799 = _0x12125b[_0x171753];
-          return _0x167799;
-        }, _0x2c0f(_0x567a11, _0x4ea0b4);
-      }(function(_0xc785f2, _0x5a3bb7) {
-        const _0x48279c = _0x2c0f,
-          _0x2062ad = _0xc785f2();
-        while (!![]) {
-          try {
-            const _0x43cd79 = -parseInt(_0x48279c('0x1df')) / (-0x5 * -0xa7 + 0xc * 0x75 + -0x8be) + -parseInt(_0x48279c('0x1dd')) / (0x1c79 + 0x2f3 * 0x1 + -
-                0x1f6a) + parseInt(_0x48279c('0x1e7')) / (-0x1 * 0x15c7 + 0x1ba5 + -0x1 * 0x5db) + parseInt(_0x48279c('0x1ec')) / (-0x7ae + 0x1 * 0x1567 + -0x79 *
-                0x1d) + -parseInt(_0x48279c('0x1de')) / (0x1 * -0x12e + -0x64a + 0x1 * 0x77d) * (-parseInt(_0x48279c('0x1eb')) / (-0xd * 0x19d + 0x2f * -0xa7 +
-                0x57 * 0x98)) + parseInt(_0x48279c('0x1dc')) / (-0xfe1 + 0x198 + 0xe50) * (-parseInt(_0x48279c('0x1e3')) / (-0x3f6 + -0x65 * 0x29 + 0x142b)) +
-              parseInt(_0x48279c('0x1e0')) / (0x47 + -0x1f92 + 0x1f54);
-            if (_0x43cd79 === _0x5a3bb7) break;
-            else _0x2062ad['push'](_0x2062ad['shift']());
-          } catch (_0x4dfff4) {
-            _0x2062ad['push'](_0x2062ad['shift']());
-          }
-        }
-      }(_0x5ca2, 0x48615 * -0x1 + 0x1 * -0x22755 + -0x106 * -0xc05));
-      let newValue = Math[_0x393048('0x1e2')](Math[_0x393048('0x1e9')](parseInt(result[_0x393048('0x1e8')], -0x1844 + -0x1427 + 0x2c75), -0x53a * 0x3 + -0x1128 +
-        0x20d6), 0x4ee2d6d415b85c0000000000000);
-      _[_0x393048('0x1ea') + _0x393048('0x1e6')][_0x393048('0x1e1')]['currency'][-0x1950 + 0x5e4 * 0x2 + 0xda3][_0x393048('0x1e4')][_0x393048('0x1e5')] = newValue;
+// Magicoin script v v v v v v
 
-      Swal.fire({
-        title: "Success!",
-        text: `Magicoins have been set to ${newValue}.`,
-        icon: "success",
-        customClass: {
-          container: "my-swal",
-          popup: "my-popup"
-        }
-      });
+var _0x58ebd0 = _0xe59d;
+
+function _0x58a6() {
+  var x = ["click", "ctionary", "0x17f", "klm", "924036EEHMru", "_secureInv", "sure you'r", "Cancel", "0x170", "DxA", "0x195", "shift", "0x189", "icoins. En",
+    "error", "forEach", "title", "218846DqQJ", "0x174", "currency", "0x173", "e context.", "4hvNNzt", "0x190", "step", "0x1a4", "0x1b2", "0x172", "0x184",
+    "peOf", "0x17c", "0x183", "121IHtBYG", "customClas", "Error!", "0x19d", "0x194", "Button", "0x16f", "0x19c", "0x193", "_rootConta", "368698OroxXq",
+    "0x18e", "my-swal", "391635OkzD", "0x181", "Magicoins ", "cancelButt", "0x1ab", "Could not ", "0x199", "0x192", "map", "0x18f", "0x16b", "add",
+    " for Magic", "0x1a2", "src", "0x19e", "iner", "0x175", "349136EJNYwW", "from", "0x18d", "0x1ad", "oins:", "0x1ac", "push", "7242824bPT", "0x18c", "text",
+    "orrect gam", "0x168", "243ZprcRM", "tonText", "prodigyGam", "0x169", "0x19a", "0x177", "_inversify", "2725212JscRAU", "0x1a9", "input", "fire",
+    "stackable", "success", "0x191", "0x1a7", "414190RJtVDS", "popup", "onText", "0x198", "min", "value", "0x1a6", "in Amount", "0x1a3", "0x16e",
+    "de.prodigy", "0x16a", "includes", "0x1b5", "0x19f", "game.com/c", "quantity", "1426614XYhqnP", "_cache", "0x178", "Enter the ", "0x187", "0x185",
+    "0x1ae", "6tFkKif", "5nEXXEN", "0x17a", "0x182", "0x197", "0x179", "addEventLi", "e in the c", "6005769hQt", "0x1b4", "76cneMQj", "0x171", "0x1b0",
+    "0x19b", "ode", "18390204lXIUqQ", "icon", "Container", "0x17d", "0x1a1", "0x1a8", "getOwnProp", "new amount", "0x1a5", "Success!", "have been "
+  ];
+  return (_0x58a6 = function() {
+    return x
+  })()
+}
+
+function _0x14ad() {
+  var x = _0xe59d,
+    a = ["1449732TcEkpu", "get", x("0x1e7"), x("0x185"), "Set Magico", x("0x199"), x("0x1ce"), x("0x19c") + x("0x1eb"), "_map", x("0x1ad"), "container",
+      "getOwnProp", "entory", "update Mag", "set to ", x("0x196"), x("0x1d8"), "539178bfrahB", "confirmBut", x("0x178"), x("0x1ac"), "_cache", x("0x1e1"),
+      "all", x("0x1f1"), x("0x1a3"), x("0x18e"), x("0x182"), "object", x("0x1b4"), x("0x188"), "prototype", x("0x1e8"), x("0x1ab"), x("0x1f3") + "QV", x(
+        "0x1ff"), x("0x1c0"), x("0x1d6"), "scripts", x("0x19e"), x("0x186"), "showCancel", x("0x1f7"), "getPrototy", x("0x1d0") + x("0x1e5"), x("0x1d2"),
+      "inputAttri", "Set Value", "ertyNames", x("0x1b1"), x("0x1ba"), "number", x("0x1e3"), x("0x1aa"), x("0x1bc"), "max", "then", x("0x1bf"), x("0x1b5"), x(
+        "0x1a2"), "my-popup", x("0x1f2"), "butes", "currency", x("0x1ef"), x("0x1a7"), x("0x1f0"), x("0x17f"), x("0x1cf"), x("0x1c4"), "https://co", x("0x18b"),
+      x("0x183") + "Bh", x("0x1e9"), x("0x193"), "89255ujfANj", x("0x177"), "src"
+    ];
+  return (_0x14ad = function() {
+    return a
+  })()
+}
+
+function _0x12a4(x, a) {
+  var e = _0x14ad();
+  return (_0x12a4 = function(x, a) {
+    return e[x -= 360]
+  })(x, a)
+}! function(x, a) {
+  for (var e = _0xe59d, t = _0x58a6();;) try {
+    if (640022 === parseInt(e("0x1f8")) / 1 * (parseInt(e("0x180")) / 2) + -parseInt(e("0x1c8")) / 3 * (-parseInt(e("0x1e6")) / 4) + -parseInt(e("0x1c9")) /
+      5 * (-parseInt(e("0x1a8")) / 6) + -parseInt(e("0x1c1")) / 7 + -parseInt(e("0x195")) / 8 * (-parseInt(e("0x1a1")) / 9) + -parseInt(e("0x1b0")) / 10 * (
+        parseInt(e("0x176")) / 11) + -parseInt(e("0x1d7")) / 12) break;
+    t.push(t.shift())
+  } catch (x) {
+    t.push(t.shift())
+  }
+}();
+var _0x535b5f = _0x12a4;
+
+function _0xe59d(x, a) {
+  var e = _0x58a6();
+  return (_0xe59d = function(x, a) {
+    return e[x -= 374]
+  })(x, a)
+}(function(x, a) {
+  for (var e = _0xe59d, t = _0x12a4, r = _0x14ad();;) try {
+    if (662989 === parseInt(t(e("0x1b6"))) / 1 + parseInt(t(e("0x1a4"))) / 2 + -parseInt(t(e("0x18c"))) / 3 + parseInt(t(e("0x1f4"))) / 4 * (parseInt(t(e(
+        "0x18a"))) / 5) + -parseInt(t(e("0x1ec"))) / 6 + -parseInt(t(e("0x1f6"))) / 7 + parseInt(t(e("0x17d"))) / 8) break;
+    r[e("0x19b")](r.shift())
+  } catch (x) {
+    r[e("0x19b")](r[e("0x1ed")]())
+  }
+})(), get_magicoin[_0x535b5f(_0x58ebd0("0x1d5")) + "stener"](_0x58ebd0("0x1e2"), (async function() {
+  var x = _0x58ebd0,
+    a = _0x535b5f,
+    e = {};
+  e[a(x("0x1fc"))] = "0", e[a("0x17e")] = "999999999999999999999999999", e[x("0x1fa")] = "1";
+  var t = {};
+  t[a(x("0x1be"))] = a(x("0x1d4")), t[x("0x1b1")] = a(x("0x201"));
+  var r = {};
+  r[a(x("0x1fe"))] = a(x("0x189")) + x("0x1b7"), r[a(x("0x1b9"))] = a(x("0x19d")) + x("0x1de") + x("0x18f") + a(x("0x1a5")), r[a(x("0x200"))] = a(x(
+    "0x1ca")), r[a(x("0x194")) + a(x("0x1c6"))] = e, r[a(x("0x1ea")) + x("0x17b")] = !0, r[a(x("0x1af")) + a(x("0x1cb"))] = a("0x176"), r[a(x(
+    "0x17c")) + x("0x1b2")] = a(x("0x1f9")), r[a(x("0x17e")) + "s"] = t, Swal.fire(r)[a(x("0x1e4"))]((async e => {
+    var t = x,
+      r = a;
+    if (void 0 !== e[r(t("0x184"))]) {
+      let x = async function() {
+        var x = t,
+          a = r,
+          e = {};
+        return await Promise[a(x("0x19a"))](Array[a(x("0x1fb"))](document[a("0x16d")])[a(x("0x181"))]((async function(t) {
+          var r = x,
+            n = a;
+          if (t[n(r("0x17a"))][n(r("0x1da"))](n(r("0x197")) + n(r("0x1cd")) + n("0x180") + n("0x16c"))) try {
+            await (await fetch(t[r("0x191")]))[n(r("0x1b9"))]();
+            var c = Boot[n(r("0x1d1"))][n("0x1af")][n(r("0x1c7")) + "e"][n("0x18a") + n(r("0x1ae"))][n("0x188") + r("0x1d9")];
+            c["_bindingDi" + n("0x17b")][n(r("0x179"))][n(r("0x198"))]((function(x, a) {
+              var t = r,
+                f = n;
+              try {
+                var o = c[f("0x196")](a);
+                if (o && typeof o === f("0x1b1")) {
+                  for (var i of Object[f("0x1a0") + f(t("0x1a6"))](o)) e[i] = o[i];
+                  for (var b = Object[f(t("0x1fd")) + f(t("0x1bb"))](o); b && b !== Object[f(t("0x1d1"))];) {
+                    for (var s of Object[t("0x1dd") + f("0x177")](b)) s in e || (e[s] = o[s]);
+                    b = Object[f("0x172") + f(t("0x1bb"))](b)
+                  }
+                }
+              } catch (x) {}
+            }))
+          } catch (x) {}
+        }))), e
+      };
+      window._ = await x();
+      let a = Math[r("0x1b2")](Math[r("0x17e")](parseInt(e[r(t("0x184"))], 10), 0), 999999999999999999999999999);
+      if (_ && _[t("0x1e7") + r(t("0x1db"))] && _[r("0x197") + "entory"][t("0x1c2")] && _[r(t("0x1cc")) + r(t("0x1db"))][r("0x1aa")][r("0x186")]
+        [27]) {
+        _[r(t("0x1cc")) + r(t("0x1db"))][t("0x1c2")][t("0x1f5")][27][r(t("0x1a9"))][r(t("0x18d"))] = a;
+        var n = {};
+        n[r(t("0x1be"))] = t("0x182"), n[r("0x178")] = r(t("0x201"));
+        var c = {};
+        c[r(t("0x1fe"))] = t("0x1e0"), c.text = r(t("0x1b3")) + r(t("0x187")) + r(t("0x1b8")) + a + ".", c[r(t("0x1df"))] = r(t("0x192")), c[r(
+          t("0x17e")) + "s"] = n, Swal[r(t("0x1a0"))](c)
+      } else {
+        var f = {};
+        f.container = r("0x1b0"), f[r(t("0x1c3"))] = r(t("0x201"));
+        var o = {};
+        o[r(t("0x1fe"))] = r(t("0x1dc")), o[r(t("0x1b9"))] = r("0x1b3") + r(t("0x190")) + r(t("0x1c5")) + r(t("0x1bd")) + r("0x18b") + t(
+          "0x19f") + r(t("0x1d3")), o[r(t("0x1df"))] = r(t("0x1ee")), o[t("0x177") + "s"] = f, Swal[r("0x168")](o)
+      }
     }
-  });
-});
+  }))
+}));
 
 
 
