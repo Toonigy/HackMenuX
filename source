@@ -303,6 +303,22 @@ script.onload = function() {
   </div>
   <div class="button-container">
     <label class="toggle-switch">
+    <input type="checkbox" id="plus-membership-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>Toggle Plus Membership</span>
+    <div class="description">[SERVER SIDE] Temporarily enable or disable plus membership.</div>
+  </div>
+  <div class="button-container">
+    <label class="toggle-switch">
+    <input type="checkbox" id="ultra-membership-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>Toggle Ultra Membership</span>
+    <div class="description">[SERVER SIDE] Temporarily enable or disable ultra membership.</div>
+  </div>
+  <div class="button-container">
+    <label class="toggle-switch">
     <input type="checkbox" id="players-removal-toggle">
       <span class="slider"></span>
     </label>
@@ -317,12 +333,6 @@ script.onload = function() {
     <span>Toggle UI Removal</span>
     <div class="description">[CLIENT SIDE] Hides or shows player UI (CURRENTLY BEING LOOKED INTO).</div>
   </div>
-    <div class="button-container">
-      <!-- Future button - eeeeeeeeeeeeeee # -->
-    </div>
-    <div class="button-container">
-      <!-- Future button # -->
-    </div>
   </div>
 </div>
 <div class="section">
