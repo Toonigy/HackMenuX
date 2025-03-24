@@ -19,6 +19,7 @@ Your safety is our priority! The CrackinPMG Hack Menu is designed to be complete
 📅 Version History
 
 Version 1.0 - Released on 11/03/2025
+Version 1.1 - Released on 23/03/2025
 
 Initial release 🚀
 
