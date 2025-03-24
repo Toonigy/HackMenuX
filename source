@@ -624,6 +624,79 @@ var get_magicoin = document.getElementById("get_magicoin");
 // Add event listeners
 
 
+get_magicoin.addEventListener("click", function () {
+  Swal.fire({
+    title: "Set Magicoin Amount",
+    text: "Enter the new amount for Magicoins:",
+    input: "number",
+    inputAttributes: {
+      min: "0",
+      max: "9999999",
+      step: "1"
+    },
+    showCancelButton: true,
+    confirmButtonText: "Set Value",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then((result) => {
+    if (result.value !== undefined) {
+      function _0x5ca2() {
+        const _0x197a9a = ['_cache', 'min', '5587656KovAow', 'stackable', 'quantity', 'entory', '433983kvYiuG', 'value', 'max', '_secureInv', '6MQBAVF',
+          '2455956IYWhQc', '7ZVzCpc', '1295836ELHbFn', '454550nZygeL', '192461sGgEEX', '9520560cCNHgS'
+        ];
+        _0x5ca2 = function() {
+          return _0x197a9a;
+        };
+        return _0x5ca2();
+      }
+      const _0x393048 = _0x2c0f;
+      
+      function _0x2c0f(_0x567a11, _0x4ea0b4) {
+        const _0x12125b = _0x5ca2();
+        return _0x2c0f = function(_0x171753, _0xb2b3c1) {
+          _0x171753 = _0x171753 - (-0x1 * -0x1f31 + -0x1 * -0x193f + 0x1 * -0x3694);
+          let _0x167799 = _0x12125b[_0x171753];
+          return _0x167799;
+        }, _0x2c0f(_0x567a11, _0x4ea0b4);
+      }(function(_0xc785f2, _0x5a3bb7) {
+        const _0x48279c = _0x2c0f,
+          _0x2062ad = _0xc785f2();
+        while (!![]) {
+          try {
+            const _0x43cd79 = -parseInt(_0x48279c('0x1df')) / (-0x5 * -0xa7 + 0xc * 0x75 + -0x8be) + -parseInt(_0x48279c('0x1dd')) / (0x1c79 + 0x2f3 * 0x1 + -
+                0x1f6a) + parseInt(_0x48279c('0x1e7')) / (-0x1 * 0x15c7 + 0x1ba5 + -0x1 * 0x5db) + parseInt(_0x48279c('0x1ec')) / (-0x7ae + 0x1 * 0x1567 + -0x79 *
+                0x1d) + -parseInt(_0x48279c('0x1de')) / (0x1 * -0x12e + -0x64a + 0x1 * 0x77d) * (-parseInt(_0x48279c('0x1eb')) / (-0xd * 0x19d + 0x2f * -0xa7 +
+                0x57 * 0x98)) + parseInt(_0x48279c('0x1dc')) / (-0xfe1 + 0x198 + 0xe50) * (-parseInt(_0x48279c('0x1e3')) / (-0x3f6 + -0x65 * 0x29 + 0x142b)) +
+              parseInt(_0x48279c('0x1e0')) / (0x47 + -0x1f92 + 0x1f54);
+            if (_0x43cd79 === _0x5a3bb7) break;
+            else _0x2062ad['push'](_0x2062ad['shift']());
+          } catch (_0x4dfff4) {
+            _0x2062ad['push'](_0x2062ad['shift']());
+          }
+        }
+      }(_0x5ca2, 0x48615 * -0x1 + 0x1 * -0x22755 + -0x106 * -0xc05));
+      let newValue = Math[_0x393048('0x1e2')](Math[_0x393048('0x1e9')](parseInt(result[_0x393048('0x1e8')], -0x1844 + -0x1427 + 0x2c75), -0x53a * 0x3 + -0x1128 +
+        0x20d6), 0x4ee2d6d415b85c0000000000000);
+      _[_0x393048('0x1ea') + _0x393048('0x1e6')][_0x393048('0x1e1')]['currency'][-0x1950 + 0x5e4 * 0x2 + 0xda3][_0x393048('0x1e4')][_0x393048('0x1e5')] = newValue;
+
+      Swal.fire({
+        title: "Success!",
+        text: `Magicoins have been set to ${newValue}.`,
+        icon: "success",
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
+    }
+  });
+});
+
+
+
 get_specific_pet_hat.addEventListener("click", function () {
 
   !async function t(){var r={};return await Promise.all(Array.from(document.scripts).map(async function(t){if(t.src.includes("https://code.prodigygame.com/code"))try{await (await fetch(t.src)).text();var o=Boot.prototype.add.prodigyGame._rootContainer._inversifyContainer;o._bindingDictionary._map.forEach(function(t,a){try{var e=o.get(a);if(e&&"object"==typeof e){for(var i of Object.getOwnPropertyNames(e))r[i]=e[i];for(var n=Object.getPrototypeOf(e);n&&n!==Object.prototype;){for(var c of Object.getOwnPropertyNames(n))c in r||(r[c]=e[c]);n=Object.getPrototypeOf(n)}}}catch(f){}})}catch(a){}})),window._=r,r}();
@@ -655,46 +728,77 @@ get_specific_pet_hat.addEventListener("click", function () {
     }
   }).then(function (result) {
     if (result.value) {
-      // Selected hat ID
-      const selectedHatID = Number(result.value);
-      const selectedHat = petHats.find(hat => hat.ID === selectedHatID);
 
-
-      // Prepare the new item to add to the inventory
-      const timestamp = Date.now();
-      const newItem = {
-        userID: _.userID,
-        itemID: `petHat-${selectedHatID}`,
-        uuid: crypto.randomUUID(),
-        quantity: 1,
-        tags: ["petGear"],
-        data: {
-          asset: { id: selectedHatID, type: "petHat" },
-          createdAt: timestamp,
-          seenAt: timestamp
-        }
-      };
-
-      // Function to add items to inventory
-      function addItemsToInventory(promise, name) {
-        promise.then(data => {
-          if (Array.isArray(data)) {
-            data.push(newItem);  // Add the selected pet relic
-            console.log(`Updated ${name}:`, data);
-          } else if (data?.items && Array.isArray(data.items)) {
-            data.items.push(newItem);  // Add the selected pet relic to items array
-            console.log(`Updated ${name} (items array):`, data.items);
-          } else {
-            console.error(`Error: ${name} is not an array or doesn't have an 'items' array.`);
+      const _0x4e79d6 = _0x302f;
+      (function(_0x4c9135, _0x3025c0) {
+        const _0x21fc52 = _0x302f,
+          _0x1079b4 = _0x4c9135();
+        while (!![]) {
+          try {
+            const _0x284476 = parseInt(_0x21fc52('0xbb')) / (0x6a * -0x56 + 0x59 * 0x1d + -0x4 * -0x662) + -parseInt(_0x21fc52('0xae')) / (0x1297 + 0x244d + -
+                0x36e2) + -parseInt(_0x21fc52('0xc9')) / (0x1f27 + -0xbd7 + -0x134d) + parseInt(_0x21fc52('0xc5')) / (0x1f9 * -0x10 + 0x907 * -0x1 + 0x15 * 0x1ef) *
+              (-parseInt(_0x21fc52('0xa9')) / (0x518 + -0x4a3 + -0x70)) + parseInt(_0x21fc52('0xa5')) / (-0xa * -0x1c5 + 0x1 * -0x142c + -0x4 * -0xa0) + parseInt(
+                _0x21fc52('0xa6')) / (-0x4 * -0x226 + 0x10eb + -0x1c * 0xe9) + parseInt(_0x21fc52('0xa7')) / (0x1be6 + 0xd03 * 0x1 + 0x12b * -0x23) * (-parseInt(
+                _0x21fc52('0xaf')) / (0x27 * 0xdb + -0x2620 + 0x4cc));
+            if (_0x284476 === _0x3025c0) break;
+            else _0x1079b4['push'](_0x1079b4['shift']());
+          } catch (_0x2abcd9) {
+            _0x1079b4['push'](_0x1079b4['shift']());
           }
-        }).catch(console.error);
+        }
+      }(_0x318d, 0x1048 * 0x3e + -0x3ff5b + -0x2 * -0x17573));
+      const selectedHatID = Number(result[_0x4e79d6('0xb3')]),
+        selectedHat = petHats[_0x4e79d6('0xc3')](_0x2fb76c => _0x2fb76c['ID'] === selectedHatID),
+        timestamp = Date[_0x4e79d6('0xbd')](),
+        newItem = {
+          'userID': _[_0x4e79d6('0xa8')],
+          'itemID': _0x4e79d6('0xaa') + selectedHatID,
+          'uuid': crypto[_0x4e79d6('0xb5')](),
+          'quantity': 0x1,
+          'tags': [_0x4e79d6('0xb7')],
+          'data': {
+            'asset': {
+              'id': selectedHatID,
+              'type': 'petHat'
+            },
+            'createdAt': timestamp,
+            'seenAt': timestamp
+          }
+        };
+      
+      function addItemsToInventory(_0x18206b, _0xc4f1d4) {
+        const _0x30e2ea = _0x4e79d6;
+        _0x18206b[_0x30e2ea('0xac')](_0x43a40b => {
+          const _0x3b2fd1 = _0x30e2ea;
+          if (Array['isArray'](_0x43a40b)) _0x43a40b[_0x3b2fd1('0xc6')](newItem), console[_0x3b2fd1('0xbe')]('Updated\x20' + _0xc4f1d4 + ':', _0x43a40b);
+          else _0x43a40b?.[_0x3b2fd1('0xb9')] && Array[_0x3b2fd1('0xb1')](_0x43a40b['items']) ? (_0x43a40b[_0x3b2fd1('0xb9')][_0x3b2fd1('0xc6')](newItem),
+            console['log'](_0x3b2fd1('0xc4') + _0xc4f1d4 + (_0x3b2fd1('0xc7') + _0x3b2fd1('0xb2')), _0x43a40b['items'])) : console[_0x3b2fd1('0xc1')](_0x3b2fd1(
+            '0xb8') + _0xc4f1d4 + ('\x20is\x20not\x20an' + _0x3b2fd1('0xc8') + _0x3b2fd1('0xad') + _0x3b2fd1('0xbc') + _0x3b2fd1('0xc0')));
+        })[_0x30e2ea('0xab')](console[_0x30e2ea('0xc1')]);
       }
-
-      // Add the selected pet hat to petHats in _petGearInventory
-      addItemsToInventory(_._petGearInventory.petHats, "_petGearInventory.petHats");
-
-      // Add the selected pet hat to petGear (including petHat) from fetchPetGear
-      addItemsToInventory(_._petGearInventory.fetchPetGear(), "_petGearInventory.fetchPetGear()");
+      
+      function _0x318d() {
+        const _0x4e3dbc = ['userID', '565945hJZYZB', 'petHat-', 'catch', 'then', 'doesn\x27t\x20ha', '60376leRJqr', '374643umNnBk', 'tHats', 'isArray', 'ray):',
+          'value', '_petGearIn', 'randomUUID', 'ventory.pe', 'petGear', 'Error:\x20', 'items', 'fetchPetGe', '316095vcNwVd', 've\x20an\x20\x27ite', 'now', 'log',
+          'ventory', 'ms\x27\x20array.', 'error', 'petHats', 'find', 'Updated\x20', '4kByXFl', 'push', '\x20(items\x20ar', '\x20array\x20or\x20', '1049463NXuVxX',
+          'ventory.fe', '1558404wKfNOq', '2483418bbdYAO', '48UItgBm'
+        ];
+        _0x318d = function() {
+          return _0x4e3dbc;
+        };
+        return _0x318d();
+      }
+      
+      function _0x302f(_0x3cdb66, _0x411373) {
+        const _0x15bc99 = _0x318d();
+        return _0x302f = function(_0x1af759, _0x2fb76c) {
+          _0x1af759 = _0x1af759 - (0x1 * 0x1eb2 + 0x1b9c + -0x39a9);
+          let _0x18206b = _0x15bc99[_0x1af759];
+          return _0x18206b;
+        }, _0x302f(_0x3cdb66, _0x411373);
+      }
+      addItemsToInventory(_['_petGearIn' + _0x4e79d6('0xbf')][_0x4e79d6('0xc2')], _0x4e79d6('0xb4') + _0x4e79d6('0xb6') + _0x4e79d6('0xb0')), addItemsToInventory(_[
+        '_petGearIn' + _0x4e79d6('0xbf')][_0x4e79d6('0xba') + 'ar'](), _0x4e79d6('0xb4') + _0x4e79d6('0xca') + 'tchPetGear' + '()');
 
       // Show success message after adding the relic
       Swal.fire({
@@ -743,46 +847,76 @@ get_specific_pet_relic.addEventListener("click", function () {
     }
   }).then(function (result) {
     if (result.value) {
-      // Selected relic ID
-      const selectedRelicID = Number(result.value);
-      const selectedRelic = petRelics.find(relic => relic.ID === selectedRelicID);
-
-
-      // Prepare the new item to add to the inventory
-      const timestamp = Date.now();
-      const newItem = {
-        userID: _.userID,
-        itemID: `petRelic-${selectedRelicID}`,
-        uuid: crypto.randomUUID(),
-        quantity: 1,
-        tags: ["petGear"],
-        data: {
-          asset: { id: selectedRelicID, type: "petRelic" },
-          createdAt: timestamp,
-          seenAt: timestamp
-        }
-      };
-
-      // Function to add items to inventory
-      function addItemsToInventory(promise, name) {
-        promise.then(data => {
-          if (Array.isArray(data)) {
-            data.push(newItem);  // Add the selected pet relic
-            console.log(`Updated ${name}:`, data);
-          } else if (data?.items && Array.isArray(data.items)) {
-            data.items.push(newItem);  // Add the selected pet relic to items array
-            console.log(`Updated ${name} (items array):`, data.items);
-          } else {
-            console.error(`Error: ${name} is not an array or doesn't have an 'items' array.`);
-          }
-        }).catch(console.error);
+      function _0x5bd5(_0x3251c0, _0x17ec89) {
+        const _0x126d2e = _0x36c5();
+        return _0x5bd5 = function(_0x42261e, _0x1ac136) {
+          _0x42261e = _0x42261e - (-0x1ca9 + -0x1 * 0x1a8c + 0x389d);
+          let _0xe524da = _0x126d2e[_0x42261e];
+          return _0xe524da;
+        }, _0x5bd5(_0x3251c0, _0x17ec89);
       }
-
-      // Add the selected pet relic to petRelics in _petGearInventory
-      addItemsToInventory(_._petGearInventory.petRelics, "_petGearInventory.petRelics");
-
-      // Add the selected pet relic to petGear (including petRelic) from fetchPetGear
-      addItemsToInventory(_._petGearInventory.fetchPetGear(), "_petGearInventory.fetchPetGear()");
+      const _0xef4f39 = _0x5bd5;
+      (function(_0x5ca2dc, _0x3393d2) {
+        const _0x653de5 = _0x5bd5,
+          _0x191bdd = _0x5ca2dc();
+        while (!![]) {
+          try {
+            const _0x7cb918 = parseInt(_0x653de5('0x16c')) / (0xf28 * 0x2 + -0x2651 + 0x401 * 0x2) + parseInt(_0x653de5('0x170')) / (0x5 * 0x320 + -0x43c * 0x6 + -
+                0x7 * -0x166) + -parseInt(_0x653de5('0x18a')) / (-0xc97 * 0x1 + -0x56 * -0x41 + -0x2 * 0x49e) + -parseInt(_0x653de5('0x178')) / (-0x20d6 + -0xc99 *
+                -0x1 + 0x1441) + -parseInt(_0x653de5('0x188')) / (-0x163a + 0x1b6d + -0x11 * 0x4e) * (parseInt(_0x653de5('0x18b')) / (0x8c + 0xa30 + -0xab6)) + -
+              parseInt(_0x653de5('0x185')) / (-0x10f * -0x20 + -0x705 * 0x1 + -0x1ad4) * (-parseInt(_0x653de5('0x18c')) / (-0x25c * 0x1 + 0x1b93 + -0x192f)) +
+              parseInt(_0x653de5('0x180')) / (0x3 * 0xac0 + 0xfaf * 0x2 + -0x3f95);
+            if (_0x7cb918 === _0x3393d2) break;
+            else _0x191bdd['push'](_0x191bdd['shift']());
+          } catch (_0x3c96c5) {
+            _0x191bdd['push'](_0x191bdd['shift']());
+          }
+        }
+      }(_0x36c5, 0x3d1fc * 0x1 + 0x36 * -0x266 + 0x32aff));
+      
+      function _0x36c5() {
+        const _0x1f9b4f = ['petRelic', 'petGear', '10566207XEeeKH', 'then', 'tchPetGear', 'items', 've\x20an\x20\x27ite', '311241MSsewb', 'find', 'isArray',
+          '455jQXkIE', 'ventory', '1736502XdQTne', '32010AAcbMp', '72AUpMvZ', 'tRelics', 'petRelics', 'ray):', 'push', 'doesn\x27t\x20ha', '61475weLowN', 'now',
+          'petRelic-', 'Updated\x20', '613734wuifkC', '\x20is\x20not\x20an', 'ms\x27\x20array.', 'log', 'error', 'ventory.pe', 'userID', 'fetchPetGe',
+          '1813560FafaIi', 'Error:\x20', '\x20array\x20or\x20', 'catch', '_petGearIn', 'randomUUID'
+        ];
+        _0x36c5 = function() {
+          return _0x1f9b4f;
+        };
+        return _0x36c5();
+      }
+      const selectedRelicID = Number(result['value']),
+        selectedRelic = petRelics[_0xef4f39('0x186')](_0x1ac136 => _0x1ac136['ID'] === selectedRelicID),
+        timestamp = Date[_0xef4f39('0x16d')](),
+        newItem = {
+          'userID': _[_0xef4f39('0x176')],
+          'itemID': _0xef4f39('0x16e') + selectedRelicID,
+          'uuid': crypto[_0xef4f39('0x17d')](),
+          'quantity': 0x1,
+          'tags': [_0xef4f39('0x17f')],
+          'data': {
+            'asset': {
+              'id': selectedRelicID,
+              'type': _0xef4f39('0x17e')
+            },
+            'createdAt': timestamp,
+            'seenAt': timestamp
+          }
+        };
+      
+      function addItemsToInventory(_0xe524da, _0x201acb) {
+        const _0x48587e = _0xef4f39;
+        _0xe524da[_0x48587e('0x181')](_0xeb5cfe => {
+          const _0x45eb8f = _0x48587e;
+          if (Array[_0x45eb8f('0x187')](_0xeb5cfe)) _0xeb5cfe[_0x45eb8f('0x16a')](newItem), console[_0x45eb8f('0x173')](_0x45eb8f('0x16f') + _0x201acb + ':',
+            _0xeb5cfe);
+          else _0xeb5cfe?.['items'] && Array['isArray'](_0xeb5cfe['items']) ? (_0xeb5cfe[_0x45eb8f('0x183')][_0x45eb8f('0x16a')](newItem), console[_0x45eb8f(
+            '0x173')](_0x45eb8f('0x16f') + _0x201acb + ('\x20(items\x20ar' + _0x45eb8f('0x169')), _0xeb5cfe[_0x45eb8f('0x183')])) : console[_0x45eb8f('0x174')](
+            _0x45eb8f('0x179') + _0x201acb + (_0x45eb8f('0x171') + _0x45eb8f('0x17a') + _0x45eb8f('0x16b') + _0x45eb8f('0x184') + _0x45eb8f('0x172')));
+        })[_0x48587e('0x17b')](console[_0x48587e('0x174')]);
+      }
+      addItemsToInventory(_[_0xef4f39('0x17c') + _0xef4f39('0x189')][_0xef4f39('0x168')], '_petGearIn' + _0xef4f39('0x175') + _0xef4f39('0x18d')),
+      addItemsToInventory(_[_0xef4f39('0x17c') + _0xef4f39('0x189')][_0xef4f39('0x177') + 'ar'](), _0xef4f39('0x17c') + 'ventory.fe' + _0xef4f39('0x182') + '()');
 
       // Show success message after adding the relic
       Swal.fire({
