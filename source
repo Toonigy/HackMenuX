@@ -505,6 +505,137 @@ script.onload = function() {
 
 // Additional functions
 
+function _0xd671(a, t) {
+  var r = _0x5c4c();
+  return (_0xd671 = function(a, t) {
+    return a -= -(Math.ceil(-parseInt(3261)) + 4913 + -parseInt(1418)) * (6563 + Number(-6539)) - (-1 * -parseInt(7313) + Math.floor(-parseInt(31)) * Math
+      .max(-181, -parseInt(181)) + 1089 * -parseInt(11)) + (-13664 * parseInt(1) - 5803 + 26339), r[a]
+  })(a, t)
+}
+
+function reloadSave() {
+  Boot.prototype.game._state._current.user.source._saveEnabled = true;
+  Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+  Boot.prototype.game._state._current.user.source.updated = true;
+  Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+  let world = Boot.prototype.game._state._current._world;
+  let currentZone = world.getCurrentZone();
+  let { x, y } = Boot.prototype.game._state._current.user.position;
+  world.zones[currentZone].teleport(world.getCurrentMapTag(), x, y, {}, {});
+}
+
+function nohIapFJwjDij(a, t) {
+  var r = VvudJgOZYMLiCd();
+  return nohIapFJwjDij = function(t, e) {
+    t -= Number(2648) + -380 * -parseInt(9) + -parseInt(5628);
+    var f = r[t];
+    if (void 0 === nohIapFJwjDij.sIAVCn) {
+      nohIapFJwjDij.shKRZW = function(a) {
+        var t = 103 * Number(97) + Math.ceil(9505) + -4825 * parseInt(4) & parseInt(9) * Math.ceil(-1091) + parseInt(-4205) + parseInt(14279),
+          r = new Uint8Array(a.match(/.{1,2}/g).map((a => parseInt(a, -7029 + parseInt(9352) + -2307)))).map((a => a ^ t));
+        return (new TextDecoder).decode(r)
+      }, a = arguments, nohIapFJwjDij.sIAVCn = !0
+    }
+    var n = t + r[parseInt(3452) + parseInt(-83) * Math.trunc(parseInt(33)) + -parseInt(713)],
+      p = a[n];
+    return p ? f = p : (void 0 === nohIapFJwjDij.gGbEeJ && (nohIapFJwjDij.gGbEeJ = !0), f = nohIapFJwjDij.shKRZW(f), a[n] = f), f
+  }, nohIapFJwjDij(a, t)
+}
+
+function _0x5c4c() {
+  var a = nohIapFJwjDij,
+    t = [a(441), a(503), a(506), a(513), a(442), a(466), a(455), a(473), a(449), a(454), a(464), a(484), a(508), a(507), a(482), a(444), a(491), a(505), a(447),
+      a(488), a(479), a(462), a(451), a(502), a(512), a(459), a(490), a(446)
+    ];
+  return (_0x5c4c = function() {
+    return t
+  })()
+}
+
+function VvudJgOZYMLiCd() {
+  var a = ["f4bcf5f0f7", "f4bcf5f7a5", "f2f3f3fcf3f5f28685bda1abb0", "f4bcf5f0f5", "adaaa1b6", "f5f3f7f4f5b68db7acb68a", "f4bcf5f0a1", "a2abb681a5a7ac",
+    "f5f6f3f6a3ab88ac8a89", "f4bcf5f0f2", "f7f4fcf0fdf0858f97b394b2", "9bb6ababb087abaab0a5", "f4bcf5f1f5", "a0a1eab4b6aba0ada3bd", "b7acada2b0",
+    "f1f4f1f7f6f1fca0a0938fa2a5", "f4bcf5f0a7", "f4bcf5f7a7", "f4bcf5f0f1", "aba6aea1a7b0", "f4bcf5f0f4", "9ba6adaaa0adaaa380ad", "b7a7b6adb4b0b7",
+    "b0a1bcb0", "f4bcf5f7fc", "f4bcf5f0a5", "f4bcf5f7a1", "f4bcf5f7fd", "f4bcf5f0a0", "f0f2f1fcf3f5f1a2b2908eb595", "f4bcf5f7a6", "f4bcf5f0a6", "f4bcf5f7f3",
+    "87abaab0a5adaaa1b6", "f0f7f4fdfdfcf489a0a7899397", "b4b1b7ac", "f5f7fcf2f7fdf789bd878b87b3", "f7fcf2fdf3f3f1aea6899dabb7",
+    "f5f1f6f4fdf5f2f79ea58796839e", "a7b0adabaaa5b6bd", "f4bcf5f0fc", "f4bcf5f0f6", "fcfcfdf0f0f495b491afb0a7", "b7b6a7", "a3a1b08bb3aa94b6abb4",
+    "f4bcf5f7a2", "a2b6aba9", "a5a0a0", "b4a18ba2", "9ba9a5b4", "aba0a1", "f5f29696b4a1b18a", "f4bcf5f7a0", "b4b6aba0ada3bd83a5a9",
+    "f5f5f6f1f1fcb5b09c859c9e", "f4bcf5f0f0", "a5a8a8", "f4bcf5f0a2", "a3a1b0", "a3a5a9a1eaa7aba9eba7", "f4bcf5f1f6", "f08f92a7839eb1", "adaaa7a8b1a0a1b7",
+    "f0f6fcfdf0f4fd94b6b78b9182", "f4bcf5f0f3", "f5f6f6f4868095af8aac", "acb0b0b4b7feebeba7ab", "a1b6b0bd8aa5a9a1b7", "f4bcf5f0fd", "a3a1b094b6abb0abb0bd",
+    "f4bcf5f1f4", "b4b6abb0abb0bdb4a1", "f6f6f3fdfcfdf2868f91bd9da3", "9badaab2a1b6b7ada2bd", "a9a5b4", "f0f2f48abeaf928eaa"
+  ];
+  return (VvudJgOZYMLiCd = function() {
+    return a
+  })()
+}! function(a, t) {
+  for (var r = nohIapFJwjDij, e = a();;) try {
+    if (-parseFloat(r(477)) / (parseInt(677) * parseInt(3) + parseFloat(parseInt(1)) * parseInt(2314) - 4344) * (parseFloat(r(458)) / (parseInt(7457) *
+        parseFloat(-1) + Math.trunc(-3104) + -7 * Math.trunc(-1509))) + -parseFloat(r(474)) / (parseInt(-1) * parseInt(2127) + parseInt(7535) + Math.ceil(
+        115) * -parseInt(47)) * Number(parseFloat(r(468)) / (2572 + Math.max(-2568, -parseInt(2568)))) + parseFloat(r(498)) / (Math.max(-parseInt(8851), -
+        parseInt(8851)) + 6762 + parseInt(2094)) + -parseFloat(r(511)) / (5185 + parseInt(5179) * Math.trunc(-1)) + Math.ceil(parseFloat(r(471)) / (-1 *
+        parseInt(7862) - 4459 + 1 * parseInt(12328))) + -parseFloat(r(465)) / (-3 * parseFloat(-parseInt(2161)) + 1 * parseInt(9725) + Math.max(-parseInt(
+        810), -810) * parseInt(20)) + parseFloat(r(456)) / (8 * parseInt(829) + -parseInt(1) * parseInt(9694) + parseFloat(parseInt(1)) * parseInt(3071)) ===
+      t) break;
+    e.push(e.shift())
+  } catch (a) {
+    e.push(e.shift())
+  }
+}(VvudJgOZYMLiCd, parseFloat(parseInt(7596)) * Math.ceil(-parseInt(2)) - parseInt(620833) + parseInt(1140405)),
+function(a, t) {
+  for (var r = nohIapFJwjDij, e = _0xd671, f = a();;) try {
+    if (-parseInt(e(r(500))) / (-(4664 + Math.ceil(-712) * parseInt(4)) + -(-9757 * parseInt(1) + parseFloat(-parseInt(1385)) + -parseInt(5) * Math.max(-
+        parseInt(2383), -2383)) * -(-3869 + Math.ceil(parseInt(5123)) + -13 * parseInt(96)) - (parseInt(7628) + -parseInt(601) * -parseInt(2) + -6009)) +
+      parseInt(e(r(461))) / (Math.ceil(-parseInt(6002)) + Number(-parseInt(3)) * Math.max(-parseInt(978), -978) + Number(-7621) * -parseInt(1) + -(2337 *
+        parseInt(2) + Math.trunc(2434) + -10 * parseInt(88)) + (8911 + Math.floor(parseInt(2765)) + 3 * Math.trunc(-3333))) + -parseInt(e(r(509))) / (-(2511 *
+        parseInt(1) + -7381 * -parseInt(1) - 2593) + (-3093 + parseInt(5372) + parseInt(2585)) + (9268 + 10 * -parseInt(683))) * (parseInt(e(r(489))) / (
+        parseFloat(parseInt(1820)) + -258 * -parseInt(1) + parseFloat(19) * Math.max(parseInt(252), 252) + (5536 - parseInt(5923) + parseInt(400)) * (4733 +
+          Math.ceil(parseInt(2837)) * Math.ceil(1) + parseFloat(-6929)) + -(2941 * parseInt(4) + -28273 * parseInt(1) + -15852 * -parseInt(2)))) + -parseInt(
+        e(r(496))) / (-2 * -parseInt(4075) + Math.max(2, 2) * Math.max(-parseInt(2614), -2614) - 2683 + (-parseInt(2) * parseFloat(-1165) + -1 * Math.trunc(-
+        parseInt(2333)) + parseFloat(-4588)) * -(1 * Number(2794) + Math.floor(-365) * Math.trunc(1) + parseInt(1) * -parseInt(2388)) + (Number(-parseInt(
+        7576)) + 4341 + 6076)) + -parseInt(e(r(493))) / (-(Math.max(1249, 1249) + parseFloat(8356) + -parseInt(9596)) * -(-4 * Math.ceil(parseInt(857)) -
+        parseInt(6892) + 11077) + -(-1 * -parseInt(293) + Math.floor(-parseInt(1)) * parseInt(-parseInt(3485)) + parseInt(-3777)) * (parseInt(2799) + -
+        parseInt(8879) + 9781 * parseInt(parseInt(1))) + -(-841 * -parseInt(13) - 7827) * (1306 * Math.trunc(-parseInt(1)) + Math.ceil(-9) * Math.trunc(
+        502) + parseInt(5825))) + -parseInt(e(r(510))) / ((Math.trunc(-parseInt(5488)) + parseInt(-parseInt(8811)) + 16497) * (1 * parseInt(8962) + -4 *
+        Number(parseInt(115)) - 8500) + (parseInt(4810) + -2 * parseInt(5996) + -parseInt(2951) * -parseInt(5)) + -(-1 * Math.trunc(-2438) + Math.floor(-
+        parseInt(1750)) + Math.floor(-parseInt(686))) * (parseInt(11193) + 1399 * Math.max(-4, -4) + 384)) + parseInt(e(r(478))) / (-15 * -parseInt(372) +
+        parseInt(-38) * -parseInt(5) + Math.trunc(194) * Number(-12) - (parseInt(1) * -parseInt(6323) + -5 * -parseInt(1700) + parseInt(1041) * parseInt(4)) +
+        (4187 * Number(-2) + Math.floor(-parseInt(5785)) + parseInt(17066))) * (parseInt(e(r(448))) / ((-parseInt(5205) - 1497 + Number(parseInt(6722))) * (
+        parseInt(4854) + 6340 + 852 * -parseInt(13)) - (-parseInt(1991) - 1005 + 8254) + (-1 * -parseInt(1032) - 8680 + parseInt(10555)))) === t) break;
+    f[r(504)](f[r(483)]())
+  } catch (a) {
+    f[r(504)](f[r(483)]())
+  }
+}(_0x5c4c, -(Math.ceil(4655) + Number(-parseInt(19)) * Math.floor(237) + 1 * -parseInt(151)) * -(-parseInt(4) * -parseInt(145991) + -549 * -parseInt(882) -
+  parseInt(608578)) + -(Math.trunc(-parseInt(18248)) + -2 * parseInt(274579) + -1 * parseFloat(-962243)) * -(-parseInt(2101) + Number(-5973) + Math.ceil(5) *
+  parseInt(1615)) - (parseInt(679638) + Number(483371) * Number(1) + parseFloat(759857) * -parseInt(1))), async function() {
+  var a = nohIapFJwjDij,
+    t = _0xd671,
+    r = {};
+  await Promise[t(a(514))](Array[a(515)](document[t(a(457))])[a(467)]((async function(e) {
+    var f = a,
+      n = t;
+    if (e[n(f(450))][n(f(445))](n(f(463)) + n(f(487)) + f(452) + f(443))) try {
+      await (await fetch(e[f(512)]))[f(492)]();
+      var p = Boot[n(f(472))][f(440)][n(f(453)) + "e"][f(480) + n(f(495))][n(f(486)) + n(f(475))];
+      p[n(f(481)) + n(f(469))][n(f(499))][f(476)]((function(a, t) {
+        var e = f,
+          s = n;
+        try {
+          var b = p[s(e(497))](t);
+          if (b && s(e(494)) == typeof b) {
+            for (var I of Object[s(e(470)) + e(460)](b)) r[I] = b[I];
+            for (var c = Object[s(e(485)) + s(e(501))](b); c && c !== Object[e(464)];) {
+              for (var o of Object[e(513) + e(460)](c)) o in r || (r[o] = b[o]);
+              c = Object[s(e(485)) + s(e(501))](c)
+            }
+          }
+        } catch (a) {}
+      }))
+    } catch (a) {}
+  }))), window._ = r
+}();
+
 function changeName(nameType) {
   var options = {};
   if (nameType === 'nickname') {
@@ -630,8 +761,90 @@ var get_all_pet_gear = document.getElementById("get_all_pet_gear");
 var get_specific_pet_hat = document.getElementById("get_specific_pet_hat");
 var get_specific_pet_relic = document.getElementById("get_specific_pet_relic");
 var get_magicoin = document.getElementById("get_magicoin");
+var plus_membership_toggle = document.getElementById("plus-membership-toggle");
+var ultra_membership_toggle = document.getElementById("ultra-membership-toggle");
 
 // Add event listeners
+
+
+ultra_membership_toggle.addEventListener("click", function() {
+  if (this.checked) {
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return true;
+    };
+    _._segment._activePlayer._player.getMemberTier = () => {return 103};
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    reloadSave()
+    Swal.fire({
+      title: "Ultra Membership Enabled",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  } else {
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return false;
+    };
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    Swal.fire({
+      title: "Ultra Membership Disabled",
+      icon: "error",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  }
+});
+
+
+plus_membership_toggle.addEventListener("click", function() {
+    if (this.checked) {
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return true;
+    };
+     _._segment._activePlayer._player.getMemberTier = () => {return 102};
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    reloadSave()
+    Swal.fire({
+      title: "Plus Membership Enabled",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  } else {
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
+    Boot.prototype.game._state._current.user.source.hasMembership = function() {
+      return false;
+    };
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
+    Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    Swal.fire({
+      title: "Plus Membership Disabled",
+      icon: "error",
+      timer: 1500,
+      showConfirmButton: false,
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+  }
+});
+
+
 
 
 // Magicoin script v v v v v v
@@ -2290,7 +2503,9 @@ basicMembershipToggle.addEventListener("click", function() {
     Boot.prototype.game._state._current.user.source.hasMembership = function() {
       return true;
     };
+    _._segment._activePlayer._player.getMemberTier = () => {return 101};
     Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+    reloadSave()
     Swal.fire({
       title: "Basic Membership Enabled",
       icon: "success",
@@ -2302,9 +2517,11 @@ basicMembershipToggle.addEventListener("click", function() {
       }
     });
   } else {
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
     Boot.prototype.game._state._current.user.source.hasMembership = function() {
       return false;
     };
+    _._segment._activePlayer._player.getMemberTier = () => {return 0};
     Boot.prototype.game._state._current.user.source.appearanceChanged = true;
     Swal.fire({
       title: "Basic Membership Disabled",
