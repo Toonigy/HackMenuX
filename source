@@ -499,7 +499,7 @@ script.onload = function() {
   <div class="button-row">
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="get_wizard_name">Get Wizard Name</button>
-      <div class="description">[SERVER SIDE] Changes player's name to be 'Wizard'</div>
+      <div class="description">[SERVER SIDE] Changes player's name to be 'Wizard'. Note: To you it displays your account username, but to the server, it displays: 'Wizard'.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="bobbify_account">Bobbify Account</button>
@@ -927,12 +927,15 @@ get_wizard_name.addEventListener("click", function() {
       Boot.prototype.game._state._current.user.source.name.data.middleName = null;
       Boot.prototype.game._state._current.user.source.name.data.lastName = null;
       Boot.prototype.game._state._current.user.source.name.data.nicknameName = null;
-      Boot.prototype.game._state._current.user.source.name._fallbackName = null;
+      // Not necessary but here just in case: Boot.prototype.game._state._current.user.source.name._fallbackName = null;
       
-      Boot.prototype.game._state._current.user.source._saveEnabled = true;
-      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
-      Boot.prototype.game._state._current.user.source.updated = true;
-      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+      let source = Boot.prototype.game._state._current.user.source;
+      source.appearance.updated = true;
+      source.updated = true;
+      source.saveEnabled = true;
+      source.forceSaveCharacter();
+      source.appearanceChanged = true;
+
 
     Swal.fire({
           title: 'Success!',
