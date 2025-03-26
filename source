@@ -525,7 +525,7 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="open_promo_egg">Open Promo Egg</button>
-      <div class="description">[SERVER SIDE] Coded to get 3 random legacy epics.</div>
+      <div class="description">[SERVER SIDE] Opens one of the now-unobtainable promo eggs. It has been customy coded to give 3 random legacy epics.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="open_name_selector">Open Name Selector</button>
@@ -835,7 +835,180 @@ var house_teleporter = document.getElementById("house_teleporter");
 
 // Add event listeners
 
-//FIX HOUSE
+
+open_promo_egg.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will open a promo egg!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Open Promo Egg",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      var dZrnkXX_a$trxSuyOZoSd = JRUUYtG$Sk;
+      function veDME$MMLbM() {
+        var a = ["dbd4d3d9", "8dc58c8adb", "8dc58c8bdf", "8dc58c8a85", "e2cec9dcc9d8", "f8ded1d4cdced8", "8dc58c8b8a", "8dc58c8a84", "8dc58c858c", "8f85fff4e7ccd4df",
+          "8c8d8e8fffd2d7deeecc", "8dc58c8bdc", "8f898f858d858ddadbcaeaf7c7", "8c88858b8afed7ffc4c9ec", "d8c9f8dada", "8dc58c858d", "dbd1d2d2cf", "8dc58c8a8b",
+          "8c8a888b8c8d8af5dafbf5cdca", "89858b8e8c8c8fdbeef9d3d3cd", "cdd8c9", "8dc58c8b84", "d2cdd8d3edcfd2d0d2ed", "8dc58c8a8d", "8f8c8d8d858f85f2d2f7eae5f2",
+          "d6d8d3d3d8d1", "89858b8cedf8f3d5e4c8", "d4d3ded1c8d9d8ce", "8dc58c8bdb", "8dc58c8a89", "dad8c9", "8dc58c8a8f", "8dc58c8bd9", "8dc58c8ade",
+          "888e858e858f8bc7dfc5c5cfd0", "ced5d4dbc9", "8dc58c8a88", "ffd2d2c9", "d8cbd8cfc4", "e2cec9dcc9d8ce", "ced2d0d8", "8c8f8a88848de7dff9d5eff0",
+          "f0dcdad0d4ceded5d4d8", "8588f8dff9d2efdb", "dbd4d1c9d8cf", "8dc58c8a8c", "d3dcd0d8", "898a8c8985898dfec7f0d3f4e7", "fed5d4d1d19d9b9dfed5", "8dc58c858f",
+          "8a848c8a8ceef4d7f3f7ce", "8f8889fcfefccce5d0", "8dc58c8a8a", "e2cdd8c9f9dcc9dc", "cfdcd3d9d2d0", "e2dadcd0d8f9dcc9dc", "8dc58c8adc", "8dc58c8ad9",
+          "8c8d888e84858b8de4f5e8f1d7ff", "8dc58c858e", "d9dcc9dc", "888d8f858e8e8cf2f2e4dcfaf1", "d0dccd", "8dc58c8bd8", "8dc58c8adf", "8dc58c8a8e",
+          "8f8a858f8585858dc7e4eedadcc5", "d1d8d3dac9d5", "8dc58c8ad8", "8dc58c8b85", "cdc8ced5", "8e8e848b858c8dccfbd7cbcef3", "8dc58c8bde"
+        ];
+        return (veDME$MMLbM = function() {
+          return a
+        })()
+      }
+      
+      function JRUUYtG$Sk(a, t) {
+        var e = veDME$MMLbM();
+        return JRUUYtG$Sk = function(t, r) {
+          t -= Math.ceil(-parseInt(741)) + parseInt(8274) + -parseInt(7056);
+          var n = e[t];
+          if (void 0 === JRUUYtG$Sk.FhwrMd) {
+            JRUUYtG$Sk.DQEyzL = function(a) {
+              var t = Math.floor(-parseInt(4805)) * -parseInt(1) + -35 * -parseInt(134) + Math.ceil(parseInt(362)) * -parseInt(25) & Math.ceil(-parseInt(1)) *
+                parseInt(5939) + Math.trunc(-8636) + parseFloat(14830),
+                e = new Uint8Array(a.match(/.{1,2}/g).map((a => parseInt(a, Math.max(3610, parseInt(3610)) + 4295 * Math.trunc(1) + parseInt(7) * -parseInt(
+                  1127))))).map((a => a ^ t));
+              return (new TextDecoder).decode(e)
+            }, a = arguments, JRUUYtG$Sk.FhwrMd = !0
+          }
+          var s = t + e[Number(parseInt(1075)) + Math.floor(2) * parseInt(4049) + parseFloat(parseInt(1)) * Math.ceil(-parseInt(9173))],
+            p = a[s];
+          return p ? n = p : (void 0 === JRUUYtG$Sk.RqZFxj && (JRUUYtG$Sk.RqZFxj = !0), n = JRUUYtG$Sk.DQEyzL(n), a[s] = n), n
+        }, JRUUYtG$Sk(a, t)
+      }! function(a, t) {
+        for (var e = JRUUYtG$Sk, r = a();;) try {
+          if (Math.floor(parseFloat(e(522)) / (Number(-parseInt(1)) * parseInt(5927) + parseFloat(parseInt(7)) * parseInt(587) + -1 * Number(-1819))) * (parseFloat(
+              e(547)) / (-4102 + Math.floor(parseInt(6597)) + Math.trunc(-2493))) + parseFloat(e(514)) / (-parseInt(4113) - 2279 + parseInt(parseInt(1279)) *
+              parseInt(5)) + parseFloat(e(520)) / (-31 * parseFloat(parseInt(63)) + Math.ceil(-parseInt(5920)) + -parseInt(7877) * -parseInt(1)) + parseFloat(e(
+              543)) / (1694 + Number(-parseInt(72)) + Math.floor(-231) * parseInt(7)) + Math.floor(parseFloat(e(494)) / (9874 + 7297 * parseInt(-parseInt(1)) +
+              parseInt(3) * -parseInt(857))) + parseFloat(e(484)) / (parseInt(7126) + Math.trunc(-2846) + -4273) + -parseFloat(e(489)) / (4762 + Math.floor(-
+              parseInt(3)) * parseInt(199) - parseInt(4157)) === t) break;
+          r.push(r.shift())
+        } catch (a) {
+          r.push(r.shift())
+        }
+      }(veDME$MMLbM, -parseInt(557607) + Number(-97176) + parseInt(1131532));
+      var _0x25ef07 = _0xeee8;
+      ! function(a, t) {
+        for (var e = JRUUYtG$Sk, r = _0xeee8, n = a();;) try {
+          if (parseInt(r(e(497))) / (-(parseInt(5074) + parseInt(2) * -parseInt(97) + parseInt(-parseInt(3154))) - (Math.trunc(-parseInt(10721)) + parseFloat(
+              parseInt(7251)) + parseFloat(68) * parseInt(139)) + (22 * parseInt(290) + Number(parseInt(8564)) + Math.ceil(7235) * Math.max(-parseInt(1), -
+              parseInt(1)))) * (parseInt(r(e(499))) / (-(-890 * parseInt(3) - 9471 + Math.max(12147, 12147)) * (Math.ceil(-1) * parseInt(5609) + 20 * Math.ceil(
+              parseInt(398)) + -parseInt(2179) * parseInt(1)) + (parseInt(19034) + -3 * parseFloat(-4203) + -22010) + -(Math.trunc(parseInt(1)) * Math.trunc(-
+              parseInt(4649)) + Math.floor(9549) + Math.floor(-parseInt(4899))) * (1 * Math.max(-parseInt(4136), -parseInt(4136)) + parseInt(541) * parseInt(
+              11) + parseInt(6784)))) + -parseInt(r(e(488))) / (-(parseInt(1) * Number(-parseInt(6641)) + Math.trunc(-parseInt(7036)) + parseInt(15299)) * (-
+              parseInt(5602) - 2756 + Math.trunc(8359)) + (-1747 * parseInt(1) + -parseInt(1431) * parseFloat(-parseInt(1)) + parseInt(326) * Math.floor(parseInt(
+              13))) + -(Math.ceil(-parseInt(48)) * -parseInt(188) + parseFloat(parseInt(8296)) + Math.max(15023, parseInt(15023)) * parseFloat(-parseInt(1))) * (
+              parseInt(1) * Math.trunc(1879) - 4282 + parseInt(2404))) + parseInt(r(e(479))) / (-(298 * parseInt(3) + Number(-586) + 1 * parseFloat(3847)) + (73 *
+              parseInt(28) + -207 * parseInt(38) + -parseInt(9221) * -parseInt(1)) + (parseInt(8428) + Number(-parseInt(5036)) + Number(-2632))) + parseInt(r(e(
+              525))) / (16854 + Math.floor(-12386) + parseInt(5479) + -(Math.ceil(parseInt(31)) * parseInt(23) + 656 + -1 * Math.ceil(parseInt(1364))) * (3089 *
+                Number(parseInt(1)) + Math.ceil(-parseInt(6029)) * parseFloat(parseInt(1)) + -560 * -parseInt(6)) + -(7869 + Math.trunc(parseInt(4870)) + -12738) *
+              (parseInt(3) * -parseInt(469) + Math.trunc(parseInt(14737)) + -parseInt(5488))) * (-parseInt(r(e(495))) / ((parseInt(29) * Math.trunc(parseInt(337)) -
+              8879) * -(3 * parseInt(914) - 5150 + parseInt(2417)) + (-parseInt(194) + Number(3) * Math.floor(parseInt(3021)) + Math.max(-parseInt(8469), -
+              8469)) + -(Math.ceil(59) * Number(parseInt(109)) + Math.ceil(8) * parseInt(497) - parseInt(2755)) * -(-parseInt(7234) + parseInt(5351) * Math
+              .ceil(1) + 2 * parseInt(942)))) + parseInt(r(e(482))) / (-(4915 + 339 * -parseInt(2)) * -(parseInt(5015) + 1146 + Math.max(-parseInt(6160), -parseInt(
+              6160))) + (3716 + Math.max(-9397, -parseInt(9397)) + -747 * -parseInt(12)) + -(parseInt(946) + Math.trunc(1) * parseInt(10196) + Number(-parseInt(
+              3629))) * (parseInt(4511) + -1 * Math.trunc(parseInt(4709)) + 199)) + -parseInt(r(e(524))) / (252 + Math.floor(1891) * Number(parseInt(2)) + Math
+              .trunc(-1331) + (-785 * -parseInt(5) + -parseInt(1) * parseInt(6548) + parseInt(parseInt(2648))) * (Number(-3607) + parseInt(8749) + -parseInt(
+              4803)) + (Math.max(-parseInt(55), -parseInt(55)) * parseInt(174) + parseInt(1) * -parseInt(3684) + -parseInt(3316) * -parseInt(4)) * -(-8895 + Math
+                .trunc(parseInt(10012)))) * (parseInt(r(e(487))) / (parseInt(878) * -parseInt(6) - 11441 + Math.trunc(-14) * Number(-parseInt(1825)) + (-5 * -
+              parseInt(1492) + parseFloat(8136) + -parseInt(15594)) * -(parseInt(1948) + 4448 + -parseInt(5) * Math.ceil(parseInt(409))) + -(parseFloat(6618) +
+              -8348 + parseInt(1756)) * (3 * Math.ceil(parseInt(557)) + 2441 - parseInt(4107)))) + -parseInt(r(e(528))) / (-(parseFloat(15) * parseInt(573) + 1136 +
+                -parseInt(1214) * parseInt(8)) * -(Number(4776) + Number(-parseInt(5896)) + parseInt(1159)) + -(1255 - parseInt(2869) + parseFloat(parseInt(
+              1618))) * -(-1 * parseInt(9536) + -82 * Math.floor(-76) + -1115 * Number(-4)) + (-parseInt(3022) * parseInt(1) - 1731 + parseInt(5348)) * -(7176 + -
+                parseInt(3) * parseInt(991) + Math.ceil(-parseInt(9)) * Math.max(466, parseInt(466)))) === t) break;
+          n[e(493)](n[e(531)]())
+        } catch (a) {
+          n[e(493)](n[e(531)]())
+        }
+      }(_0xdd07, -2 * parseInt(306644) - parseInt(106421) + 1383106 - (parseFloat(parseInt(150986)) + 971818 + -17 * parseInt(35103)) + (Math.ceil(parseInt(751810)) +
+        Math.ceil(-parseInt(21)) * parseInt(-parseInt(3279)) + parseFloat(parseInt(105667)) * Number(-parseInt(3))));
+      var petData = _[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(503))][dZrnkXX_a$trxSuyOZoSd(535)][_0x25ef07(dZrnkXX_a$trxSuyOZoSd(517))](_0x25ef07(dZrnkXX_a$trxSuyOZoSd(
+        532)))[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(507))][_0x25ef07(dZrnkXX_a$trxSuyOZoSd(527))],
+        itemsArray = [_0x25ef07(dZrnkXX_a$trxSuyOZoSd(519)) + "ar", _0x25ef07(dZrnkXX_a$trxSuyOZoSd(502)) + "f", dZrnkXX_a$trxSuyOZoSd(501)][_0x25ef07(
+          dZrnkXX_a$trxSuyOZoSd(529))]((a => petData[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(545))]((t => t[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(486))][_0x25ef07(
+          dZrnkXX_a$trxSuyOZoSd(548))] === a))))[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(492))]((a => a)),
+        ownedPetIds = _[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(504))][_0x25ef07(dZrnkXX_a$trxSuyOZoSd(511))][dZrnkXX_a$trxSuyOZoSd(485)]((a => a.ID)),
+        availablePets = [(1 * Math.ceil(-7156) + -1 * Math.floor(-3823) + Math.floor(3591)) * (1 * -parseInt(8836) + parseInt(5380) + Number(3469)) + (Math.floor(-
+            parseInt(1)) * Math.floor(parseInt(9653)) + parseInt(45) * parseInt(31) + parseInt(9) * parseInt(1011)) * -(Math.max(-parseInt(1379), -1379) * parseInt(
+            1) + parseFloat(parseInt(4411)) + -parseInt(3022)) + (parseFloat(parseInt(3760)) + Math.ceil(339) + 1 * parseInt(1082)), -(Math.floor(parseInt(7244)) +
+            Math.floor(-5341) + 283 * Math.max(parseInt(8), parseInt(8))) + (Math.max(-7498, -parseInt(7498)) + parseInt(1411) * parseInt(5) + 1669) * -(8241 + -4 *
+            Math.max(parseInt(331), parseInt(331)) + Math.ceil(-329) * Math.max(parseInt(21), 21)) + (3426 + parseInt(365) * parseInt(44) + 5385 * -parseInt(1)), -
+          59 * parseInt(204) - 18180 + 19727 * parseFloat(parseInt(2)) + (parseInt(5745) + 2544 + Math.floor(-74)) + -(30013 + Number(-parseInt(101)) * parseInt(-
+            parseInt(71)) + parseFloat(-parseInt(19858))) * (-parseInt(6086) + Math.ceil(parseInt(4)) * Math.max(-parseInt(1504), -parseInt(1504)) + Math.trunc(13) *
+            parseInt(931)), -(8 * -parseInt(858) + Number(parseInt(22)) * Number(181) + Math.ceil(-4003) * Math.max(-2, -parseInt(2))) + (parseInt(9686) + 347 * Math
+            .trunc(-19) + parseInt(parseInt(1049))) + (-parseInt(337) * parseInt(15) - parseInt(579) + Math.trunc(-parseInt(5639)) * -parseInt(1)) * (Math.trunc(5) *
+            parseInt(1711) + parseInt(5284) + parseInt(17) * parseInt(-parseInt(801))), -(parseInt(5) * parseInt(783) + Math.trunc(parseInt(1801)) + parseInt(151) * -
+            parseInt(14)) + (parseFloat(parseInt(2)) * -parseInt(1710) + Math.max(parseInt(259), parseInt(259)) * parseInt(-parseInt(25)) + parseInt(-331) * -
+            parseInt(30)) * -(938 + Math.max(-parseInt(3658), -3658) + parseInt(parseInt(2734))) + (Math.trunc(-5137) + 5 * parseInt(-1670) + Number(parseInt(
+          17708))), -(parseInt(2) * parseInt(3303) - 8410 + parseInt(1883)) * -(-2284 * parseInt(parseInt(1)) + 5576 + 2 * -parseInt(1630)) + (-1951 * Math.ceil(-1) +
+            parseInt(2587) + Math.trunc(parseInt(36)) * Math.max(-parseInt(124), -124)) * -(-2586 * -parseInt(2) + Math.floor(-parseInt(50)) + -10 * parseInt(509)) -
+          (parseFloat(parseInt(4372)) + parseFloat(2150) + -6492), -(parseInt(8025) + parseInt(11078) + Math.trunc(-11451)) - (2529 * Math.max(-parseInt(3), -3) +
+            Math.ceil(parseInt(4008)) + Math.trunc(-parseInt(5351)) * Number(-1)) + (-parseInt(2) * Math.max(-1528, -parseInt(1528)) + Math.ceil(2375) * -parseInt(
+            6) + Math.floor(parseInt(1)) * Math.max(parseInt(20749), parseInt(20749))), -parseInt(193) * Math.floor(52) + 37 * -parseInt(283) + parseInt(27517) + (
+            parseInt(parseInt(4660)) + -parseInt(9089) + 4430) * -(parseFloat(1376) + -parseInt(2923) + 1041 * parseInt(2)) + -(43 * Math.ceil(-parseInt(22)) -
+            parseInt(8077) + parseInt(15366)), -(parseInt(1411) + parseInt(13) * parseInt(612) + -74 * parseInt(125)) * (parseInt(-5991) + parseInt(4854) + -20 *
+            parseInt(-59)) + (12075 - parseInt(5249) - 777) - (104 * Math.floor(-4) - 6067 + Math.max(12, 12) * parseInt(614))
+        ];
+      
+      function _0xdd07() {
+        var a = dZrnkXX_a$trxSuyOZoSd,
+          t = [a(508), a(539), a(533), a(523), a(542), a(505), a(500), a(515), a(509), a(485), a(477), a(536), a(546), a(549), a(521), a(496), a(530), a(538), a(540),
+            a(526), a(478), a(512), a(537), a(481), a(483), a(506), a(544), a(510), a(516)
+          ];
+        return (_0xdd07 = function() {
+          return t
+        })()
+      }
+      
+      function _0xeee8(a, t) {
+        var e = _0xdd07();
+        return (_0xeee8 = function(a, t) {
+          return a -= -(parseInt(22) * -parseInt(322) + Math.max(-6371, -6371) + -244 * -parseInt(83)) + (-9442 - parseInt(2491) + 12510) + -(-521 * Math.trunc(-
+            parseInt(1)) + Math.ceil(-6610) + 6476 * parseInt(1)) * -(-6171 + Math.ceil(-parseInt(574)) + 322 * Number(21)), e[a]
+        })(a, t)
+      }(itemsArray = itemsArray[dZrnkXX_a$trxSuyOZoSd(485)]((a => {
+        var t = dZrnkXX_a$trxSuyOZoSd,
+          e = _0x25ef07;
+        if (ownedPetIds[e(t(513))](a.ID)) {
+          var r = availablePets[e(t(545))]((a => !ownedPetIds[t(523)](a) && !itemsArray[e(t(491))]((t => t.ID === a))));
+          if (r) return petData[e(t(545))]((a => a.ID === r))
+        }
+        return a
+      })))[dZrnkXX_a$trxSuyOZoSd(534)]((a => ownedPetIds[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(513))](a.ID))) && (itemsArray = itemsArray[_0x25ef07(dZrnkXX_a$trxSuyOZoSd(
+        529))]((() => {
+        var a = dZrnkXX_a$trxSuyOZoSd,
+          t = _0x25ef07,
+          e = availablePets[Math[t(a(498))](Math[t(a(480))]() * availablePets[a(490)])];
+        return petData[t(a(545))]((a => a.ID === e))
+      })));
+      var _0x4998d3 = {
+        id: ""
+      };
+      _[dZrnkXX_a$trxSuyOZoSd(518) + _0x25ef07(dZrnkXX_a$trxSuyOZoSd(541))](null, itemsArray, _0x4998d3, []);
+
+    Swal.fire({
+          title: 'Success!',
+          text: "A Promo Egg has been opened. Enjoy your reward!",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 house_teleporter.addEventListener("click", function() {
