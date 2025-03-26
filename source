@@ -429,6 +429,24 @@ script.onload = function() {
       <div class="description">[CLIENT SIDE] Adds a specified amount of magicoins to the player's inventory. DOES NOT SAVE, JUST FOR VISUALS!</div>
     </div>
   </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="delete_all_furniture">Delete All Furniture</button>
+      <div class="description">[SERVER SIDE] Deletes all ACTIVE furniture from player's house. Just a quick way to empty house.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+  </div>
 </div>
 <div class="section">
   <h2>Battle and Monsters</h2>
@@ -473,6 +491,31 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>Special</h2>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="get_wizard_name">Get Wizard Name</button>
+      <div class="description">[SERVER SIDE] Changes player's name to be 'Wizard'</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="bobbify_account">Bobbify Account</button>
+      <div class="description">[SERVER SIDE] Add later.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="open_promo_egg">Open Promo Egg</button>
+      <div class="description">[SERVER SIDE] Coded to get 3 random legacy epics.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="open_name_selector">Open Name Selector</button>
+      <div class="description">[SERVER SIDE] Opens name selector.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="fill_house_with_furniture">Fill House With Furniture</button>
+      <div class="description">[SERVER SIDE] Fills the player's house with furniture (may be a bit laggy). Small chance of saving lol.</div>
     </div>
   </div>
 </div>
@@ -764,7 +807,145 @@ var get_magicoin = document.getElementById("get_magicoin");
 var plus_membership_toggle = document.getElementById("plus-membership-toggle");
 var ultra_membership_toggle = document.getElementById("ultra-membership-toggle");
 
+var get_wizard_name = document.getElementById("get_wizard_name");
+var bobbify_account = document.getElementById("bobbify_account");
+var open_promo_egg = document.getElementById("open_promo_egg");
+var open_name_selector = document.getElementById("open_name_selector");
+var fill_house_with_furniture = document.getElementById("fill_house_with_furniture");
+var delete_all_furniture = document.getElementById("delete_all_furniture")
+
 // Add event listeners
+
+
+delete_all_furniture.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will delete all ACTIVE furniture in your house!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete All Furniture",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.house.data.active.length = 0;
+      Boot.prototype.game._state._current.user.source.house.updated = true;
+      Boot.prototype.game._state._current.user.source._saveEnabled = true;
+      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+    Swal.fire({
+          title: 'Success!',
+          text: "All furniture has been deleted successfully. Re-enter house if needed!",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
+
+
+fill_house_with_furniture.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will add a LOT of furniture into your house!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Fill House with Furniture",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      Boot.prototype.game._state._current.user.source.house.data.active.splice(0, Boot.prototype.game._state._current.user.source.house.data.active.length);
+      for (var dormData = Boot.prototype.game._state._states.get("Boot")._gameData.dorm, i = dormData.length - 1; 0 < i; i--) {
+        var j = Math.floor(Math.random() * (i + 1)),
+          temp = dormData[i];
+        dormData[i] = dormData[j], dormData[j] = temp
+      }
+      for (var minX = 0, maxX = 1300, minY = 0, maxY = 750, i = 0; i < dormData.length; i++)
+        for (var objectID = dormData[i].ID, j = 0; j < 1000; j++) {
+          var newObject = {
+            ID: objectID,
+            anchorY: 0,
+            dx: 0,
+            dy: 0,
+            r: 0,
+            stack: [],
+            x: Math.floor(Math.random() * (maxX - minX + 1)) + minX,
+            y: Math.floor(Math.random() * (maxY - minY + 1)) + minY,
+            z: 1
+          };
+          Boot.prototype.game._state._current.user.source.house.data.active.push(newObject)
+        }
+      
+      Boot.prototype.game._state._current.user.source.house.updated = true;
+      Boot.prototype.game._state._current.user.source._saveEnabled = true;
+      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+    Swal.fire({
+          title: 'Success!',
+          text: "Furniture has been added successfully. Re-enter house if needed!",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
+
+
+get_wizard_name.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will set the player's name to 'Wizard'!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Get Wizard Name",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      
+      Boot.prototype.game._state._current.user.source.name.data.firstName = null;
+      Boot.prototype.game._state._current.user.source.name.data.middleName = null;
+      Boot.prototype.game._state._current.user.source.name.data.lastName = null;
+      Boot.prototype.game._state._current.user.source.name.data.nicknameName = null;
+      Boot.prototype.game._state._current.user.source.name._fallbackName = null;
+      
+      Boot.prototype.game._state._current.user.source._saveEnabled = true;
+      Boot.prototype.game._state._current.user.source.appearanceChanged = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+    Swal.fire({
+          title: 'Success!',
+          text: "Name has been set successfully.",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 ultra_membership_toggle.addEventListener("click", function() {
