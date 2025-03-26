@@ -836,24 +836,79 @@ var house_teleporter = document.getElementById("house_teleporter");
 // Add event listeners
 
 //FIX HOUSE
-house_teleporter.addEventListener("click", () => {
-    Swal.fire({
-        title: "Select a House",
-        input: "select",
-        inputOptions: Object.fromEntries(
-            Object.keys(Boot.prototype.game._state._current._world.zones.house.maps)
-                .map(key => [key, key.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())])
-        ),
-        showCancelButton: true,
-        confirmButtonText: "Teleport",
-        cancelButtonText: "Cancel"
-    }).then(result => {
-        if (result.isConfirmed && result.value) {
-            Boot.prototype.game._state._current._world.zones.house.teleport(result.value);
-        }
-    });
-});
 
+
+house_teleporter.addEventListener("click", function() {
+  let maps = Boot.prototype.game._state._current._world.zones.house.maps;
+
+  // Filter maps to include only those with 'preview' in their key name, or keys that are 'exit', 'exterior', or 'warden'
+  let filteredMaps = Object.keys(maps).filter(mapKey => 
+    mapKey.includes('preview') || ['exit', 'exterior', 'warden'].includes(mapKey)
+  );
+
+  // Create an options object with map keys as the key and map names as the value
+  let options = {};
+  filteredMaps.forEach(mapKey => {
+    options[mapKey] = maps[mapKey].name;  // Display the map's name (e.g., 'Modern Design')
+  });
+
+  // If there are no valid options, display an error
+  if (Object.keys(options).length === 0) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'No available maps to teleport to.',
+      icon: 'error',
+      customClass: {
+        container: 'my-swal',
+        popup: 'my-popup'
+      }
+    });
+    return;
+  }
+
+  // Show the SweetAlert UI with the available maps
+  Swal.fire({
+    title: "Select a House",
+    input: "select",
+    inputOptions: options,
+    showCancelButton: true,
+    confirmButtonText: "Teleport",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      let selectedMapKey = result.value;  // This is the map key (tag), not the full map object
+
+      if (maps[selectedMapKey]) {
+        // Teleport using the selected map key
+        Boot.prototype.game._state._current._world.zones.house.teleport(selectedMapKey);
+
+        Swal.fire({
+          title: 'Success!',
+          text: `Teleported to ${maps[selectedMapKey].name} successfully.`,
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: "Failed to teleport, map is invalid.",
+          icon: 'error',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+      }
+    }
+  });
+});
 
 
 delete_all_furniture.addEventListener("click", function() {
