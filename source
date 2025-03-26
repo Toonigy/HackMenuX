@@ -359,6 +359,24 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Teleports the player to their chosen zone, map, and coordinates.</div>
     </div>
   </div>
+  <div class="button-row">
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      <button id="house_teleporter">Player House Teleporter</button>
+      <div class="description">[SERVER SIDE] A teleporter made specifically for the house maps.</div>
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+   <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+     
+    </div>
+    <div class="button-container" style="width: calc(33.33% - 10px);">
+      
+    </div>
+  </div>
 </div>
 <div class="section">
   <h2>Inventory</h2>
@@ -812,9 +830,30 @@ var bobbify_account = document.getElementById("bobbify_account");
 var open_promo_egg = document.getElementById("open_promo_egg");
 var open_name_selector = document.getElementById("open_name_selector");
 var fill_house_with_furniture = document.getElementById("fill_house_with_furniture");
-var delete_all_furniture = document.getElementById("delete_all_furniture")
+var delete_all_furniture = document.getElementById("delete_all_furniture");
+var house_teleporter = document.getElementById("house_teleporter");
 
 // Add event listeners
+
+//FIX HOUSE
+house_teleporter.addEventListener("click", () => {
+    Swal.fire({
+        title: "Select a House",
+        input: "select",
+        inputOptions: Object.fromEntries(
+            Object.keys(Boot.prototype.game._state._current._world.zones.house.maps)
+                .map(key => [key, key.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())])
+        ),
+        showCancelButton: true,
+        confirmButtonText: "Teleport",
+        cancelButtonText: "Cancel"
+    }).then(result => {
+        if (result.isConfirmed && result.value) {
+            Boot.prototype.game._state._current._world.zones.house.teleport(result.value);
+        }
+    });
+});
+
 
 
 delete_all_furniture.addEventListener("click", function() {
