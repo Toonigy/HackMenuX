@@ -528,8 +528,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Opens one of the now-unobtainable promo eggs. It has been customy coded to give 3 random legacy epics.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      <button id="open_name_selector">Open Name Selector</button>
-      <div class="description">[SERVER SIDE] Opens name selector.</div>
+      <button id="open_name_selector">Open Wizard Name Selector</button>
+      <div class="description">[SERVER SIDE] Opens the Wizard Name Selector.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="fill_house_with_furniture">Fill House With Furniture</button>
@@ -834,6 +834,79 @@ var delete_all_furniture = document.getElementById("delete_all_furniture");
 var house_teleporter = document.getElementById("house_teleporter");
 
 // Add event listeners
+
+
+open_name_selector.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will open the Wizard Name Selector!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Open Name Selector",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      function HMAxiOoCzEuMFiEbCz() {
+        var a = ["8380878d8d81c3f8d8c2c2db", "878480eff2e4ede0cf", "8483d8f6e2f6c4fc", "dac5d0dbe2dccfd4c7d1fbd4d8d0e6d0d9d0d6c1dac7", "87818d8187f0c7daf9c1c1",
+          "87808de7d3c3f2dbed", "86868dccd1c5f4fdc3", "848384838d868ce6e1ffe0edf3", "848786d4ddc0c1f4df", "84848d84838dd8fad0f0c7e2", "848dfcc3cddaf1fe",
+          "838484858286d2faecc2dbd4", "80828c85878c85c0fbd1d1e5fe", "848284868c808387d4c2f8fcc5d1"
+        ];
+        return (HMAxiOoCzEuMFiEbCz = function() {
+          return a
+        })()
+      }
+      var FQTO$VvVbdapvABJXC$BUlztvd = aGHkf$gGTcx_RDNn;
+      
+      function aGHkf$gGTcx_RDNn(a, t) {
+        var e = HMAxiOoCzEuMFiEbCz();
+        return aGHkf$gGTcx_RDNn = function(t, r) {
+          t -= 2 * parseFloat(parseInt(1594)) + 1 * -parseInt(2308) - 533;
+          var n = e[t];
+          if (void 0 === aGHkf$gGTcx_RDNn.bFaCBA) {
+            aGHkf$gGTcx_RDNn.UPmqtt = function(a) {
+              var t = 228 * parseInt(7) + parseInt(-1955) + -270 * Math.trunc(-parseInt(2)) & Math.ceil(2937) + -5969 + parseInt(173) * Math.ceil(parseInt(19)),
+                e = new Uint8Array(a.match(/.{1,2}/g).map((a => parseInt(a, 5282 - parseInt(4845) + parseInt(1) * -parseInt(421))))).map((a => a ^ t));
+              return (new TextDecoder).decode(e)
+            }, a = arguments, aGHkf$gGTcx_RDNn.bFaCBA = !0
+          }
+          var p = t + e[parseFloat(parseInt(2785)) + 6948 + -parseInt(1) * parseInt(9733)],
+            s = a[p];
+          return s ? n = s : (void 0 === aGHkf$gGTcx_RDNn.SxSqHQ && (aGHkf$gGTcx_RDNn.SxSqHQ = !0), n = aGHkf$gGTcx_RDNn.UPmqtt(n), a[p] = n), n
+        }, aGHkf$gGTcx_RDNn(a, t)
+      }(function(a, t) {
+        for (var e = aGHkf$gGTcx_RDNn, r = a();;) try {
+          if (parseFloat(e(350)) / (-parseInt(6097) + Math.trunc(-parseInt(1)) * Number(parseInt(5297)) + 2279 * Math.floor(5)) + -parseFloat(e(357)) / (6789 +
+              Math.max(parseInt(6787), parseInt(6787)) * -parseInt(1)) * (-parseFloat(e(347)) / (9977 + 2 * Math.max(-parseInt(803), -parseInt(803)) - 8368)) +
+            Math.ceil(parseFloat(e(348)) / (Math.trunc(-parseInt(3)) * Number(-2213) - 5260 + parseInt(275) * -parseInt(5))) * Math.max(parseFloat(e(354)) / (
+              2609 * parseInt(parseInt(1)) + parseFloat(parseInt(5266)) + parseFloat(-7870)), parseFloat(e(358)) / (-11 * Number(-43) - 5874 + -5407 * -
+              parseInt(1))) + parseFloat(e(360)) / (3222 - parseInt(3215)) * (-parseFloat(e(355)) / (parseInt(parseInt(7278)) + 9117 + -1 * Math.ceil(parseInt(
+              16387)))) + parseInt(parseFloat(e(349)) / (parseFloat(2935) * parseFloat(parseInt(1)) + parseFloat(3371) + -parseInt(6297))) * parseInt(-parseFloat(
+              e(351)) / (-1 * Math.floor(6872) + Math.ceil(parseInt(8192)) + -parseInt(1310))) + Math.trunc(parseFloat(e(352)) / (parseInt(-4316) * -parseInt(3) -
+              12937)) + Math.ceil(parseFloat(e(353)) / 12) * (-parseFloat(e(359)) / (parseInt(9) * -parseInt(316) + parseInt(1904) + -1 * parseInt(-953))) === t)
+            break;
+          r.push(r.shift())
+        } catch (a) {
+          r.push(r.shift())
+        }
+      })(HMAxiOoCzEuMFiEbCz, parseInt(32377) * -parseInt(10) + parseInt(14083) * parseInt(-parseInt(108)) + Number(parseInt(2758922))), _[FQTO$VvVbdapvABJXC$BUlztvd(
+        356)](!1, !0, !0, []);
+
+    Swal.fire({
+          title: 'Success!',
+          text: "The Wizard Name Selector has been opened!",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 open_promo_egg.addEventListener("click", function() {
