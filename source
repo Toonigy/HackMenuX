@@ -521,7 +521,11 @@ script.onload = function() {
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="bobbify_account">Bobbify Account</button>
-      <div class="description">[SERVER SIDE] Add later.</div>
+      <div class="description">
+        [SERVER SIDE] Makes player look like Bobby Fancywomen.
+         <a href="https://prodigy-game.fandom.com/wiki/Bobby_Fancywoman_Incident" target="_blank" rel="noopener noreferrer">For more information visit here</a>.
+         If you want it to save, press the save button in the "Utility" section.
+      </div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="open_promo_egg">Open Promo Egg</button>
@@ -834,6 +838,56 @@ var delete_all_furniture = document.getElementById("delete_all_furniture");
 var house_teleporter = document.getElementById("house_teleporter");
 
 // Add event listeners
+
+
+bobbify_account.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will bobbify the player's account (read description)!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Bobbify Account",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      
+      var player = Boot.prototype.game._state._current.user.source
+      player.name.data.nickname = null;
+      player.name.data.firstName = 44;
+      player.name.data.middleName = 754;
+      player.name.data.lastName = 882;
+      player.data.stars = -1e22;
+      player.data.level = 69;
+  
+      player.appearance.setEyeColor(1);
+      player.appearance.setFace(4);
+      player.appearance.setHair(19, 1);
+      player.appearance.setSkinColor(1);
+      player.equipment.setFollow(19);
+      player.equipment.setHat(19);
+      player.equipment.setBoots(19);
+      player.equipment.setOutfit(19);
+      player.equipment.setWeapon(19);
+
+      // Thank you to PXI-Fusion for the pre-made script.
+
+    Swal.fire({
+          title: 'Success!',
+          text: "Account has been bobbified",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
+
 
 
 open_name_selector.addEventListener("click", function() {
