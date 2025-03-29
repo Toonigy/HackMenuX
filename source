@@ -843,34 +843,74 @@ var delete_specific_pet = document.getElementById("delete_specific_pet")
 
 
 delete_specific_pet.addEventListener("click", function() {
+  let user = Boot.prototype.game._state._current.user.source;
+  let kennel = user.kennel._petData; 
+  let petData = Boot.prototype.game._state._states.get("Boot")._gameData.pet;
+
+  if (kennel.length === 0) {
+    Swal.fire({
+      title: "No Pets",
+      text: "You have no pets to delete.",
+      icon: "info",
+      customClass: {
+        container: "my-swal",
+        popup: "my-popup"
+      }
+    });
+    return;
+  }
+
+  let options = kennel.map((pet, index) => {
+    let petName = petData[pet.ID]?.data?.name || "Unknown";
+    return `<option value="${index}">${petName} (ID: ${pet.ID}, Level: ${pet.level})</option>`;
+  }).join("");
+
   Swal.fire({
-    title: "Warning!",
-    text: "This will delete a specific pet!",
-    icon: "warning",
+    title: "Delete a Pet",
+    html: `<select id="petSelect" class="swal2-select">${options}</select>`,
     showCancelButton: true,
-    confirmButtonText: "Delete pet",
+    confirmButtonText: "Delete",
     cancelButtonText: "Cancel",
     customClass: {
       container: "my-swal",
       popup: "my-popup"
+    },
+    preConfirm: () => {
+      let select = document.getElementById("petSelect");
+      if (!select || select.value === "") {
+        Swal.showValidationMessage("Please select a pet!");
+        return false;
+      }
+      return parseInt(select.value);
     }
-  }).then(function(result) {
-    if (result.value) {
-      
-      console.log("hello world")
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let selectedIndex = result.value;
+      kennel.splice(selectedIndex, 1);
 
-    Swal.fire({
-          title: 'Success!',
-          text: "Specific pet has been deleted!",
-          icon: 'success',
-          customClass: {
-            container: 'my-swal',
-            popup: 'my-popup'
-          }
-        });
+      // Force update kennel data reference to apply changes
+      user.kennel._petData = [...kennel];
+
+      Boot.prototype.game._state._current.user.source._saveEnabled = true;
+      Boot.prototype.game._state._current.user.source.kennel.updated = true;
+      Boot.prototype.game._state._current.user.source.updated = true;
+      Boot.prototype.game._state._current.user.source.forceSaveCharacter();
+
+      Swal.fire({
+        title: "Success!",
+        text: "The selected pet has been deleted!",
+        icon: "success",
+        customClass: {
+          container: "my-swal",
+          popup: "my-popup"
+        }
+      });
     }
   });
 });
+
+
+
 
 
 bobbify_account.addEventListener("click", function() {
