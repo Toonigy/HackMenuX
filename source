@@ -453,7 +453,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] Deletes all ACTIVE furniture from player's house. Just a quick way to empty house.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="delete_specific_pet">Delete Specific Pet</button>
+      <div class="description">[SERVER SIDE] Deletes a speicifc pet from the player's inventory.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
       
@@ -524,7 +525,7 @@ script.onload = function() {
       <div class="description">
         [SERVER SIDE] Makes player look like Bobby Fancywomen.
          <a href="https://prodigy-game.fandom.com/wiki/Bobby_Fancywoman_Incident" target="_blank" rel="noopener noreferrer">For more information visit here</a>.
-         If you want it to save, press the save button in the "Utility" section.
+         Note: The items are set, not added to the inventory.
       </div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
@@ -836,8 +837,40 @@ var open_name_selector = document.getElementById("open_name_selector");
 var fill_house_with_furniture = document.getElementById("fill_house_with_furniture");
 var delete_all_furniture = document.getElementById("delete_all_furniture");
 var house_teleporter = document.getElementById("house_teleporter");
+var delete_specific_pet = document.getElementById("delete_specific_pet")
 
 // Add event listeners
+
+
+delete_specific_pet.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will delete a specific pet!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete pet",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      
+      console.log("hello world")
+
+    Swal.fire({
+          title: 'Success!',
+          text: "Specific pet has been deleted!",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 bobbify_account.addEventListener("click", function() {
