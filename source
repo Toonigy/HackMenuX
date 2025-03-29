@@ -523,7 +523,7 @@ script.onload = function() {
     <div class="button-container" style="width: calc(33.33% - 10px);">
       <button id="bobbify_account">Bobbify Account</button>
       <div class="description">
-        [SERVER SIDE] Makes player look like Bobby Fancywomen.
+        [SERVER SIDE] Makes player look like Bobby Fancywoman.
          <a href="https://prodigy-game.fandom.com/wiki/Bobby_Fancywoman_Incident" target="_blank" rel="noopener noreferrer">For more information visit here</a>.
          Note: The items are set, not added to the inventory.
       </div>
