@@ -865,7 +865,7 @@ buy_house.addEventListener("click", function() {
 
     Swal.fire({
           title: 'Success!',
-          text: "House has been bought",
+          text: "Buy House Transaction has been triggered!",
           icon: 'success',
           customClass: {
             container: 'my-swal',
