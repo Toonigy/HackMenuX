@@ -180,7 +180,7 @@ script.onload = function() {
   cheatMenu.id = "cheatMenu";
   cheatMenu.className = "hidden";
   cheatMenu.innerHTML = `
-    <h1>CrackinPMG Cheat Menu</h1>
+    <h1>CrackinPMG Hack Menu X</h1>
     <p>Join our discord community to stay up-to-date on the latest hacks and receive helpful support from our team. Simply click this link: <a href="https://discord.gg/KXDrcZQV6R" target="_blank">https://discord.gg/KXDrcZQV6R</a> or check out our channel: <a href="https://www.youtube.com/@CrackinPMG" target="_blank">https://www.youtube.com/@CrackinPMG</a></p>
 <div class="section">
   <h2>Character Enhancements</h2>
@@ -365,7 +365,8 @@ script.onload = function() {
       <div class="description">[SERVER SIDE] A teleporter made specifically for the house maps.</div>
     </div>
     <div class="button-container" style="width: calc(33.33% - 10px);">
-      
+      <button id="buy_house">Buy House</button>
+      <div class="description">[SERVER SIDE] Buy the house you are currently in. Note: You cannot buy your own house or maps that don't include a house (e.g. backyard).</div>
     </div>
    <div class="button-container" style="width: calc(33.33% - 10px);">
       
@@ -837,9 +838,43 @@ var open_name_selector = document.getElementById("open_name_selector");
 var fill_house_with_furniture = document.getElementById("fill_house_with_furniture");
 var delete_all_furniture = document.getElementById("delete_all_furniture");
 var house_teleporter = document.getElementById("house_teleporter");
-var delete_specific_pet = document.getElementById("delete_specific_pet")
+var delete_specific_pet = document.getElementById("delete_specific_pet");
+var buy_house = document.getElementById("buy_house");
 
 // Add event listeners
+
+
+buy_house.addEventListener("click", function() {
+  Swal.fire({
+    title: "Warning!",
+    text: "This will buy the house the player is currently in! (read desc)",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Buy House",
+    cancelButtonText: "Cancel",
+    customClass: {
+      container: "my-swal",
+      popup: "my-popup"
+    }
+  }).then(function(result) {
+    if (result.value) {
+      
+      let preview = Boot.prototype.game._state._current._world.getCurrentZoneObject()._teleportData.mapKey;
+      Boot.prototype.game._state._current._world.zones.house.maps[preview]?.showPurchasePopup();
+
+
+    Swal.fire({
+          title: 'Success!',
+          text: "House has been bought",
+          icon: 'success',
+          customClass: {
+            container: 'my-swal',
+            popup: 'my-popup'
+          }
+        });
+    }
+  });
+});
 
 
 delete_specific_pet.addEventListener("click", function() {
